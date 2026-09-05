@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Фрагменты буфера обмена</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Быстро заполняет буфер обмена сохранённым содержимым</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Скопировать в буфер обмена: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Нажмите Enter, чтобы скопировать этот пустой фрагмент</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">«{0}» скопирован в буфер обмена.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Не удалось скопировать в буфер обмена. Возможно, он используется другим приложением. Попробуйте ещё раз.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Показывать уведомление после успешного копирования</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Заголовок</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Содержимое</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Добавить</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Удалить</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">ОК</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Отмена</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Добавить фрагмент</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Изменить фрагмент</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">Заголовок не может быть пустым.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">Содержимое не может быть пустым.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Сначала выберите фрагмент для удаления.</system:String>
+
+</ResourceDictionary>

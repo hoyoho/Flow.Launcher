@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Výstřižky ze schránky</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Rychle vyplní schránku uloženým obsahem</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Zkopírovat do schránky: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Stiskněte Enter pro zkopírování tohoto prázdného výstřižku</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">„{0}“ bylo zkopírováno do schránky.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Kopírování do schránky selhalo. Schránka může být používána jinou aplikací. Zkuste to znovu.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Zobrazit upozornění po úspěšném zkopírování</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Název</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Obsah</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Přidat</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Odstranit</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">OK</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Zrušit</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Přidat výstřižek</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Upravit výstřižek</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">Název nesmí být prázdný.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">Obsah nesmí být prázdný.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Nejprve vyberte výstřižek k odstranění.</system:String>
+
+</ResourceDictionary>

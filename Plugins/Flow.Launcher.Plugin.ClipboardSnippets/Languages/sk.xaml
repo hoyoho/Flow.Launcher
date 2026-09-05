@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Fragmenty schránky</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Rýchlo vyplní schránku uloženým obsahom</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Kopírovať do schránky: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Stlačením klávesy Enter skopírujte tento prázdny fragment</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">„{0}“ bol skopírovaný do schránky.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Kopírovanie do schránky zlyhalo. Schránku môže používať iná aplikácia. Skúste to znova.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Zobraziť upozornenie po úspešnom kopírovaní</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Názov</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Obsah</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Pridať</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Odstrániť</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">OK</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Zrušiť</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Pridať fragment</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Upraviť fragment</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">Názov nemôže byť prázdny.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">Obsah nemôže byť prázdny.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Najprv vyberte fragment na odstránenie.</system:String>
+
+</ResourceDictionary>

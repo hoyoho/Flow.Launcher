@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Фрагменти буфера обміну</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Швидко заповнює буфер обміну збереженим вмістом</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Скопіювати в буфер обміну: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Натисніть Enter, щоб скопіювати цей порожній фрагмент</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">«{0}» скопійовано в буфер обміну.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Не вдалося скопіювати в буфер обміну. Можливо, його використовує інша програма. Спробуйте ще раз.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Показувати сповіщення після успішного копіювання</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Заголовок</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Вміст</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Додати</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Видалити</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">ОК</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Скасувати</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Додати фрагмент</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Редагувати фрагмент</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">Заголовок не може бути порожнім.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">Вміст не може бути порожнім.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Спочатку виберіть фрагмент для видалення.</system:String>
+
+</ResourceDictionary>

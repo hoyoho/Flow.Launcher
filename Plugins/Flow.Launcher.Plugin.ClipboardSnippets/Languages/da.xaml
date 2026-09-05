@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Udklipsholder-snippets</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Udfylder hurtigt udklipsholderen med dit gemte indhold</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Kopier til udklipsholderen: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Tryk på Enter for at kopiere dette tomme snippet</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">„{0}“ kopieret til udklipsholderen.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Det lykkedes ikke at kopiere til udklipsholderen. Den er måske i brug af et andet program. Prøv igen.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Vis en meddelelse efter en vellykket kopiering</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Titel</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Indhold</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Tilføj</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Slet</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">OK</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Annuller</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Tilføj snippet</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Rediger snippet</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">Titel må ikke være tom.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">Indhold må ikke være tomt.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Vælg først et snippet, der skal slettes.</system:String>
+
+</ResourceDictionary>

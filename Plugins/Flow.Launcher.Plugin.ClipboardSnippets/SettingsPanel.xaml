@@ -1,0 +1,71 @@
+<UserControl
+    x:Class="Flow.Launcher.Plugin.ClipboardSnippets.SettingsPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Margin="{StaticResource SettingPanelMargin}">
+        <ListView
+            x:Name="SnippetsList"
+            Margin="{StaticResource SettingPanelItemTopBottomMargin}"
+            BorderBrush="DarkGray"
+            BorderThickness="1"
+            MouseDoubleClick="SnippetsList_OnMouseDoubleClick"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="240" Header="{DynamicResource flowlauncher_plugin_clipboardsnippets_title}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Title}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="480" Header="{DynamicResource flowlauncher_plugin_clipboardsnippets_content}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Content}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Content}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <DockPanel
+            Margin="{StaticResource SettingPanelItemTopBottomMargin}"
+            LastChildFill="False">
+            <StackPanel
+                HorizontalAlignment="Right"
+                DockPanel.Dock="Right"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="DeleteButton"
+                    MinWidth="100"
+                    Margin="{StaticResource SettingPanelItemLeftTopBottomMargin}"
+                    Click="DeleteButton_OnClick"
+                    Content="{DynamicResource flowlauncher_plugin_clipboardsnippets_delete}" />
+                <Button
+                    x:Name="AddButton"
+                    MinWidth="100"
+                    Margin="{StaticResource SettingPanelItemLeftTopBottomMargin}"
+                    Click="AddButton_OnClick"
+                    Content="{DynamicResource flowlauncher_plugin_clipboardsnippets_add}" />
+            </StackPanel>
+            <CheckBox
+                x:Name="NotifyCheckBox"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Checked="NotifyCheckBox_OnChanged"
+                Content="{DynamicResource flowlauncher_plugin_clipboardsnippets_notify_label}"
+                Unchecked="NotifyCheckBox_OnChanged" />
+        </DockPanel>
+
+        <TextBlock
+            x:Name="HintText"
+            Margin="{StaticResource SettingPanelItemTopBottomMargin}"
+            Foreground="#8A8A8A"
+            TextWrapping="Wrap"
+            Visibility="Collapsed" />
+    </StackPanel>
+</UserControl>

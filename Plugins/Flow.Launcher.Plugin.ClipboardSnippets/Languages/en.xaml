@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Clipboard Snippets</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Quickly fill the clipboard with your preset content</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Copy to clipboard: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Press Enter to copy this empty snippet</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">“{0}” copied to the clipboard.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Failed to copy to the clipboard. The clipboard may be in use by another application, please try again.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Show a notification after a successful copy</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Title</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Content</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Add</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Delete</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">OK</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Cancel</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Add Snippet</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Edit Snippet</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">The title cannot be empty.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">The content cannot be empty.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Select a snippet to delete first.</system:String>
+
+</ResourceDictionary>

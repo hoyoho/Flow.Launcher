@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Mẩu clipboard</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Nhanh chóng điền nội dung đã nhập vào clipboard</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Sao chép vào clipboard: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Nhấn Enter để sao chép mẩu trống này</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">Đã sao chép “{0}” vào clipboard.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Không thể sao chép vào clipboard. Clipboard có thể đang được ứng dụng khác sử dụng. Vui lòng thử lại.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Hiển thị thông báo sau khi sao chép thành công</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Tiêu đề</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Nội dung</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Thêm</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Xóa</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">OK</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Hủy</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Thêm mẩu</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Chỉnh sửa mẩu</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">Tiêu đề không được để trống.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">Nội dung không được để trống.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Hãy chọn mẩu cần xóa trước.</system:String>
+
+</ResourceDictionary>

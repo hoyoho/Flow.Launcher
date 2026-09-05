@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Frammenti degli appunti</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Compila rapidamente gli appunti con il contenuto registrato</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Copia negli appunti: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Premi Invio per copiare questo frammento vuoto</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">«{0}» copiato negli appunti.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Impossibile copiare negli appunti. Gli appunti potrebbero essere in uso da un'altra applicazione. Riprova.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Mostra una notifica dopo una copia riuscita</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Titolo</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Contenuto</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Aggiungi</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Elimina</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">OK</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Annulla</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Aggiungi frammento</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Modifica frammento</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">Il titolo non può essere vuoto.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">Il contenuto non può essere vuoto.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Seleziona prima un frammento da eliminare.</system:String>
+
+</ResourceDictionary>

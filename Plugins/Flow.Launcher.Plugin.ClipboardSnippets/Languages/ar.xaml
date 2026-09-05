@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">مقاطع الحافظة</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">يملأ الحافظة بسرعة بالمحتوى الذي أدخلته</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">نسخ إلى الحافظة: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">اضغط Enter لنسخ هذا المقطع الفارغ</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">تم نسخ «{0}» إلى الحافظة.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">تعذّر النسخ إلى الحافظة. قد تكون الحافظة قيد الاستخدام من تطبيق آخر. حاول مرة أخرى.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">عرض إشعار بعد نجاح النسخ</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">العنوان</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">المحتوى</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">إضافة</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">حذف</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">موافق</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">إلغاء</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">إضافة مقطع</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">تعديل المقطع</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">لا يمكن أن يكون العنوان فارغًا.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">لا يمكن أن يكون المحتوى فارغًا.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">حدد مقطعًا للحذف أولاً.</system:String>
+
+</ResourceDictionary>

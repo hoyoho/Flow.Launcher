@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Fragmentos del portapapeles</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Rellena rápidamente el portapapeles con el contenido guardado</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Copiar al portapapeles: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Pulsa Enter para copiar este fragmento vacío</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">«{0}» copiado al portapapeles.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">No se pudo copiar al portapapeles. Es posible que otra aplicación lo esté usando. Inténtalo de nuevo.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Mostrar una notificación tras copiar correctamente</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Título</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Contenido</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Añadir</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Eliminar</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">Aceptar</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Cancelar</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Añadir fragmento</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Editar fragmento</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">El título no puede estar vacío.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">El contenido no puede estar vacío.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Selecciona primero un fragmento para eliminar.</system:String>
+
+</ResourceDictionary>

@@ -1,0 +1,14 @@
+{
+  "ID": "995D9987EFE3485FA2C10DB83197EBA8",
+  "ActionKeywords": [
+    "*"
+  ],
+  "Name": "Clipboard Snippets",
+  "Description": "Quickly fill the clipboard with your preset content",
+  "Author": "Flow-Launcher Team",
+  "Version": "1.0.1",
+  "Language": "csharp",
+  "Website": "https://github.com/Flow-Launcher/Flow.Launcher",
+  "ExecuteFileName": "Flow.Launcher.Plugin.ClipboardSnippets.dll",
+  "IcoPath": "Images\\clipboard.png"
+}

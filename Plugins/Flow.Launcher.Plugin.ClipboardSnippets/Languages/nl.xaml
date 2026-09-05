@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Klembordfragmenten</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Vult het klembord snel met uw opgeslagen inhoud</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Kopiëren naar klembord: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Druk op Enter om dit lege fragment te kopiëren</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">„{0}” naar het klembord gekopieerd.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Kopiëren naar het klembord is mislukt. Het klembord wordt mogelijk door een andere toepassing gebruikt. Probeer het opnieuw.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Een melding tonen na een geslaagd kopiëren</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Titel</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Inhoud</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Toevoegen</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Verwijderen</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">OK</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Annuleren</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Fragment toevoegen</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Fragment bewerken</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">De titel mag niet leeg zijn.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">De inhoud mag niet leeg zijn.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Selecteer eerst een fragment om te verwijderen.</system:String>
+
+</ResourceDictionary>

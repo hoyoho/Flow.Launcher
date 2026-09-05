@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Klipbord isečci</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Brzo popunjava klipbord unetim sadržajem</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Kopiraj u klipbord: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Pritisnite Enter da kopirate ovaj prazan isečak</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">„{0}“ je kopiran u klipbord.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Kopiranje u klipbord nije uspelo. Klipbord možda koristi druga aplikacija. Pokušajte ponovo.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Prikaži obaveštenje nakon uspešnog kopiranja</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Naslov</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Sadržaj</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Dodaj</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Obriši</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">U redu</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Otkaži</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Dodaj isečak</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Izmeni isečak</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">Naslov ne može biti prazan.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">Sadržaj ne može biti prazan.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Prvo izaberite isečak za brisanje.</system:String>
+
+</ResourceDictionary>

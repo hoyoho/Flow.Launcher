@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">Snippets da área de transferência</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">Preenche rapidamente a área de transferência com o conteúdo guardado</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">Copiar para a área de transferência: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">Prima Enter para copiar este snippet vazio</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">“{0}” copiado para a área de transferência.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">Não foi possível copiar para a área de transferência. Ela pode estar a ser utilizada por outra aplicação. Tente novamente.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">Mostrar uma notificação após uma cópia bem-sucedida</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">Título</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">Conteúdo</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">Adicionar</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">Remover</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">OK</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">Cancelar</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">Adicionar snippet</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">Editar snippet</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">O título não pode estar vazio.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">O conteúdo não pode estar vazio.</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">Selecione primeiro um snippet para remover.</system:String>
+
+</ResourceDictionary>

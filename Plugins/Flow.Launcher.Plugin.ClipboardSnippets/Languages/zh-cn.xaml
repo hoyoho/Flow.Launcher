@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_name">剪贴板片段</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_plugin_description">快速将录入内容填充到剪贴板</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_subtitle">复制到剪贴板：{0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_empty_subtitle">按 Enter 将这条空内容复制到剪贴板</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copied_notification">“{0}”已复制到剪贴板。</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_copy_failed">复制到剪贴板失败，剪贴板可能正被其他程序占用，请重试。</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_notify_label">复制成功后显示通知</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title">标题</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content">内容</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add">添加</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_delete">删除</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_ok">确定</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_cancel">取消</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_add_snippet_title">添加片段</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_edit_snippet_title">编辑片段</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_title_empty_error">标题不能为空。</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_content_empty_error">内容不能为空。</system:String>
+    <system:String x:Key="flowlauncher_plugin_clipboardsnippets_select_delete_error">请先选择要删除的片段。</system:String>
+
+</ResourceDictionary>
