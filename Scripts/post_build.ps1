@@ -1,15 +1,28 @@
 param(
     [string]$config = "Release",
-    [string]$solution = (Join-Path $PSScriptRoot ".." -Resolve)
+    [string]$solution = (Join-Path $PSScriptRoot ".." -Resolve),
+    [string]$channel = "win",
+    [string]$flowVersion = ""
 )
 Write-Host "Config: $config"
+Write-Host "Channel: $channel"
+Write-Host "FlowVersion: $flowVersion"
 
 function Build-Version {
-    if ([string]::IsNullOrEmpty($env:flowVersion)) {
+    if (![string]::IsNullOrEmpty($flowVersion)) {
+        $v = $flowVersion
+    } elseif (![string]::IsNullOrEmpty($env:flowVersion)) {
+        $v = $env:flowVersion
+    } elseif (![string]::IsNullOrEmpty($env:FlowVersion) -and ![string]::IsNullOrEmpty($env:BUILD_NUMBER)) {
+        $v = "$env:FlowVersion-build.$env:BUILD_NUMBER"
+    } else {
         $targetPath = Join-Path $solution "Output/Release/Flow.Launcher.dll" -Resolve
         $v = (Get-Command ${targetPath}).FileVersionInfo.FileVersion
-    } else {
-        $v = $env:flowVersion
+
+        $versionParts = $v.Split('.')
+        if ($versionParts.Length -eq 4) {
+            $v = "$($versionParts[0]).$($versionParts[1]).$($versionParts[2])-build.$($versionParts[3])"
+        }
     }
 
     Write-Host "Build Version: $v"
@@ -29,11 +42,6 @@ function Build-Path {
     Set-Location $p
 
     return $p
-}
-
-function Copy-Resources ($path) {
-    # making version static as multiple versions can exist in the nuget folder and in the case a breaking change is introduced.
-    Copy-Item -Force $env:USERPROFILE\.nuget\packages\squirrel.windows\1.9.0\tools\Squirrel.exe $path\Output\Update.exe
 }
 
 function Delete-Unused ($path, $config) {
@@ -60,40 +68,53 @@ function Validate-Directory ($output) {
     New-Item $output -ItemType Directory -Force
 }
 
+function Install-Vpk {
+    $vpkPath = Join-Path $env:USERPROFILE ".dotnet\tools\vpk.exe"
+    if (!(Test-Path $vpkPath)) {
+        dotnet tool install --global vpk | Out-Null
+        if ($LASTEXITCODE -ne 0) {
+            throw "Failed to install vpk tool"
+        }
+    }
 
-function Pack-Squirrel-Installer ($path, $version, $output) {
-    # msbuild based installer generation is not working in appveyor, not sure why
-    Write-Host "Begin pack squirrel installer"
+    return $vpkPath
+}
 
-    $spec = "$path\Scripts\flowlauncher.nuspec"
+function Pack-Velopack-Installer ($path, $version, $output, $channel) {
+    Write-Host "Begin pack velopack installer"
+    Write-Host "Version: $version"
+    Write-Host "Channel: $channel"
+
     $input = "$path\Output\Release"
-
-    Write-Host "Packing: $spec"
-    Write-Host "Input path:  $input"
-
-    # dotnet pack is not used because ran into issues, need to test installation and starting up if to use it.
-    nuget pack $spec -Version $version -BasePath $input -OutputDirectory $output -Properties Configuration=Release
-
-    $nupkg = "$output\FlowLauncher.$version.nupkg"
-    Write-Host "nupkg path: $nupkg"
     $icon = "$path\Flow.Launcher\Resources\app.ico"
-    Write-Host "icon: $icon"
-    # Squirrel.com: https://github.com/Squirrel/Squirrel.Windows/issues/369
-    New-Alias Squirrel $env:USERPROFILE\.nuget\packages\squirrel.windows\1.9.0\tools\Squirrel.exe -Force
-    # why we need Write-Output: https://github.com/Squirrel/Squirrel.Windows/issues/489#issuecomment-156039327
-    # directory of releaseDir in squirrel can't be same as directory ($nupkg) in releasify
-    $temp = "$output\Temp"
+    $packId = "FlowLauncher"
+    $mainExe = "Flow.Launcher.exe"
 
-    Squirrel --releasify $nupkg --releaseDir $temp --setupIcon $icon --no-msi | Write-Output
-    Move-Item $temp\* $output -Force
-    Remove-Item $temp
+    Write-Host "Input path:  $input"
+    Write-Host "Output path: $output"
+    Write-Host "Icon: $icon"
 
-    $file = "$output\Flow-Launcher-Setup.exe"
-    Write-Host "Filename: $file"
+    $vpk = Install-Vpk
 
-    Move-Item "$output\Setup.exe" $file -Force
+    & $vpk pack --packId $packId --packVersion $version --packDir $input --mainExe $mainExe `
+        --packTitle "Flow Launcher" --packAuthors "Flow-Launcher Team" `
+        --icon $icon --channel $channel --outputDir $output | Write-Output
 
-    Write-Host "End pack squirrel installer"
+    if ($LASTEXITCODE -ne 0) {
+        throw "vpk pack failed with exit code $LASTEXITCODE"
+    }
+
+    $setupExe = Get-ChildItem $output -Filter "*.exe" | Where-Object { $_.Name -like "FlowLauncher*" } | Select-Object -First 1
+    if ($setupExe) {
+        Move-Item $setupExe.FullName "$output\Flow-Launcher-Setup.exe" -Force
+    }
+
+    $portableZip = Get-ChildItem $output -Filter "*.zip" | Where-Object { $_.Name -like "FlowLauncher*" } | Select-Object -First 1
+    if ($portableZip) {
+        Move-Item $portableZip.FullName "$output\Flow-Launcher-Portable.zip" -Force
+    }
+
+    Write-Host "End pack velopack installer"
 }
 
 function Publish-Self-Contained ($p) {
@@ -101,22 +122,14 @@ function Publish-Self-Contained ($p) {
     $csproj  = Join-Path "$p" "Flow.Launcher/Flow.Launcher.csproj" -Resolve
     $profile = Join-Path "$p" "Flow.Launcher/Properties/PublishProfiles/Net9.0-SelfContained.pubxml" -Resolve
 
-    # we call dotnet publish on the main project. 
+    # we call dotnet publish on the main project.
     # The other projects should have been built in Release at this point.
     dotnet publish -c Release $csproj /p:PublishProfile=$profile
-}
-
-function Publish-Portable ($outputLocation, $version) {
-
-    & $outputLocation\Flow-Launcher-Setup.exe --silent | Out-Null
-    mkdir "$env:LocalAppData\FlowLauncher\app-$version\UserData"
-    Compress-Archive -Path $env:LocalAppData\FlowLauncher -DestinationPath $outputLocation\Flow-Launcher-Portable.zip
 }
 
 function Main {
     $p = Build-Path
     $v = Build-Version
-    Copy-Resources $p
 
     if ($config -eq "Release"){
 
@@ -128,9 +141,7 @@ function Main {
 
         $o = "$p\Output\Packages"
         Validate-Directory $o
-        Pack-Squirrel-Installer $p $v $o
-
-        Publish-Portable $o $v
+        Pack-Velopack-Installer $p $v $o $channel
     }
 }
 

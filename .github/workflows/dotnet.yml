@@ -52,7 +52,7 @@ jobs:
         run: dotnet test --no-build --verbosity normal -c Release
       - name: Perform post_build tasks
         shell: powershell
-        run: .\Scripts\post_build.ps1
+        run: .\Scripts\post_build.ps1 -flowVersion "$env:FlowVersion-build.$env:BUILD_NUMBER"
       - name: Upload Plugin Nupkg
         uses: actions/upload-artifact@v7
         with:
@@ -83,6 +83,13 @@ jobs:
 
           compression-level: 0
       - name: Upload Release Information
+        uses: actions/upload-artifact@v7
+        with:
+          name: Velopack release index
+          path: |
+            Output\Packages\releases.*.json
+          compression-level: 0
+      - name: Upload Legacy RELEASES
         uses: actions/upload-artifact@v7
         with:
           name: RELEASES

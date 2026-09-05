@@ -10,8 +10,6 @@ updates:
     schedule:
       interval: "daily"
     open-pull-requests-limit: 3
-    ignore:
-      - dependency-name: "squirrel-windows"
     reviewers:
       - "jjw24"
       - "taooceros"

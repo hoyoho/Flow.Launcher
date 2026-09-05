@@ -1,13 +1,12 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Windows;
 using Flow.Launcher.Infrastructure;
 using Flow.Launcher.Infrastructure.UserSettings;
 using Flow.Launcher.Plugin.SharedCommands;
 using Microsoft.Win32;
-using Squirrel;
+using Velopack.Locators;
+using Velopack.Windows;
 
 namespace Flow.Launcher.Core.Configuration
 {
@@ -15,27 +14,12 @@ namespace Flow.Launcher.Core.Configuration
     {
         private static readonly string ClassName = nameof(Portable);
 
-        /// <summary>
-        /// As at Squirrel.Windows version 1.5.2, UpdateManager needs to be disposed after finish
-        /// </summary>
-        /// <returns></returns>
-        private static UpdateManager NewUpdateManager()
-        {
-            var applicationFolderName = Constant.ApplicationDirectory
-                                            .Split(new[] { Path.DirectorySeparatorChar }, StringSplitOptions.None)
-                                            .Last();
-
-            return new UpdateManager(string.Empty, applicationFolderName, Constant.RootDirectory);
-        }
-
         public void DisablePortableMode()
         {
             try
             {
                 MoveUserDataFolder(DataLocation.PortableDataPath, DataLocation.RoamingDataPath);
 #if !DEBUG
-                // Create shortcuts and uninstaller are not required in debug mode, 
-                // otherwise will repoint the path of the actual installed production version to the debug version
                 CreateShortcuts();
                 CreateUninstallerEntry();
 #endif
@@ -43,7 +27,7 @@ namespace Flow.Launcher.Core.Configuration
 
                 PublicApi.Instance.ShowMsgBox(Localize.restartToDisablePortableMode());
 
-                UpdateManager.RestartApp(Constant.ApplicationFileName);
+                PublicApi.Instance.RestartApp();
             }
             catch (Exception e)
             {
@@ -57,8 +41,6 @@ namespace Flow.Launcher.Core.Configuration
             {
                 MoveUserDataFolder(DataLocation.RoamingDataPath, DataLocation.PortableDataPath);
 #if !DEBUG
-                // Remove shortcuts and uninstaller are not required in debug mode, 
-                // otherwise will delete the actual installed production version
                 RemoveShortcuts();
                 RemoveUninstallerEntry();
 #endif
@@ -66,7 +48,7 @@ namespace Flow.Launcher.Core.Configuration
 
                 PublicApi.Instance.ShowMsgBox(Localize.restartToEnablePortableMode());
 
-                UpdateManager.RestartApp(Constant.ApplicationFileName);
+                PublicApi.Instance.RestartApp();
             }
             catch (Exception e)
             {
@@ -76,16 +58,18 @@ namespace Flow.Launcher.Core.Configuration
 
         public void RemoveShortcuts()
         {
-            using var portabilityUpdater = NewUpdateManager();
-            portabilityUpdater.RemoveShortcutsForExecutable(Constant.ApplicationFileName, ShortcutLocation.StartMenu);
-            portabilityUpdater.RemoveShortcutsForExecutable(Constant.ApplicationFileName, ShortcutLocation.Desktop);
-            portabilityUpdater.RemoveShortcutsForExecutable(Constant.ApplicationFileName, ShortcutLocation.Startup);
+#pragma warning disable CS0618
+            new Shortcuts().RemoveShortcutForThisExe();
+#pragma warning restore CS0618
         }
 
         public void RemoveUninstallerEntry()
         {
-            using var portabilityUpdater = NewUpdateManager();
-            portabilityUpdater.RemoveUninstallerRegistryEntry();
+            var uninstallRegSubKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall";
+
+            using var baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Default);
+            using var subKey1 = baseKey.CreateSubKey(uninstallRegSubKey, RegistryKeyPermissionCheck.ReadWriteSubTree);
+            subKey1?.DeleteSubKeyTree(PortableAppId, false);
         }
 
         public void MoveUserDataFolder(string fromLocation, string toLocation)
@@ -101,25 +85,30 @@ namespace Flow.Launcher.Core.Configuration
 
         public void CreateShortcuts()
         {
-            using var portabilityUpdater = NewUpdateManager();
-            portabilityUpdater.CreateShortcutsForExecutable(Constant.ApplicationFileName, ShortcutLocation.StartMenu, false);
-            portabilityUpdater.CreateShortcutsForExecutable(Constant.ApplicationFileName, ShortcutLocation.Desktop, false);
-            portabilityUpdater.CreateShortcutsForExecutable(Constant.ApplicationFileName, ShortcutLocation.Startup, false);
+#pragma warning disable CS0618
+            new Shortcuts().CreateShortcutForThisExe();
+#pragma warning restore CS0618
         }
 
         public void CreateUninstallerEntry()
         {
             var uninstallRegSubKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall";
 
-            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Default))
-            using (var subKey1 = baseKey.CreateSubKey(uninstallRegSubKey, RegistryKeyPermissionCheck.ReadWriteSubTree))
-            using (var subKey2 = subKey1.CreateSubKey(Constant.FlowLauncher, RegistryKeyPermissionCheck.ReadWriteSubTree))
-            {
-                subKey2.SetValue("DisplayIcon", Path.Combine(Constant.ApplicationDirectory, "app.ico"), RegistryValueKind.String);
-            }
+            using var baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Default);
+            using var subKey1 = baseKey.CreateSubKey(uninstallRegSubKey, RegistryKeyPermissionCheck.ReadWriteSubTree);
+            using var subKey2 = subKey1.CreateSubKey(PortableAppId, RegistryKeyPermissionCheck.ReadWriteSubTree);
+            subKey2?.SetValue("DisplayIcon", Constant.ExecutablePath, RegistryValueKind.String);
+        }
 
-            using var portabilityUpdater = NewUpdateManager();
-            _ = portabilityUpdater.CreateUninstallerRegistryEntry();
+        private static string PortableAppId
+        {
+            get
+            {
+                if (VelopackLocator.IsCurrentSet)
+                    return VelopackLocator.Current.AppId;
+
+                return Constant.FlowLauncher;
+            }
         }
 
         private static void IndicateDeletion(string filePathTodelete)
@@ -148,7 +137,7 @@ namespace Flow.Launcher.Core.Configuration
             {
                 FilesFolders.RemoveFolderIfExists(roamingDataDir, (s) => PublicApi.Instance.ShowMsgBox(s));
 
-                if (PublicApi.Instance.ShowMsgBox(Localize.moveToDifferentLocation(), 
+                if (PublicApi.Instance.ShowMsgBox(Localize.moveToDifferentLocation(),
                     string.Empty, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     FilesFolders.OpenPath(Constant.RootDirectory, (s) => PublicApi.Instance.ShowMsgBox(s));

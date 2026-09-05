@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
-using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using Flow.Launcher.Plugin.SharedCommands;
 using Flow.Launcher.Infrastructure;
-using Flow.Launcher.Infrastructure.Http;
 using Flow.Launcher.Infrastructure.UserSettings;
 using Flow.Launcher.Plugin;
-using JetBrains.Annotations;
-using Squirrel;
+using Flow.Launcher.Plugin.SharedCommands;
+using Velopack;
+using Velopack.Locators;
+using Velopack.Sources;
 
 namespace Flow.Launcher.Core
 {
@@ -44,54 +42,48 @@ namespace Flow.Launcher.Core
                     _api.ShowMsg(Localize.pleaseWait(),
                         Localize.update_flowlauncher_update_check());
 
-                using var updateManager = await GitHubUpdateManagerAsync(GitHubRepository).ConfigureAwait(false);
+                var updateManager = new UpdateManager(new GithubSource(GitHubRepository, null, false));
 
-                // UpdateApp CheckForUpdate will return value only if the app is squirrel installed
-                var newUpdateInfo = await updateManager.CheckForUpdate().NonNull().ConfigureAwait(false);
+                var newUpdateInfo = await updateManager.CheckForUpdatesAsync().ConfigureAwait(false);
 
-                var newReleaseVersion =
-                    SemanticVersioning.Version.Parse(newUpdateInfo.FutureReleaseEntry.Version.ToString());
-                var currentVersion = SemanticVersioning.Version.Parse(Constant.Version);
-
-                _api.LogInfo(ClassName, $"Future Release <{Formatted(newUpdateInfo.FutureReleaseEntry)}>");
-
-                if (newReleaseVersion <= currentVersion)
+                if (newUpdateInfo == null)
                 {
                     if (!silentUpdate)
                         _api.ShowMsgBox(Localize.update_flowlauncher_already_on_latest());
                     return;
                 }
 
+                var newRelease = newUpdateInfo.TargetFullRelease;
+
+                _api.LogInfo(ClassName, $"Future Release <{Formatted(newRelease)}>");
+
                 if (!silentUpdate)
                     _api.ShowMsg(Localize.update_flowlauncher_update_found(),
                         Localize.update_flowlauncher_updating());
 
-                await updateManager.DownloadReleases(newUpdateInfo.ReleasesToApply).ConfigureAwait(false);
-
-                await updateManager.ApplyReleases(newUpdateInfo).ConfigureAwait(false);
+                await updateManager.DownloadUpdatesAsync(newUpdateInfo).ConfigureAwait(false);
 
                 if (DataLocation.PortableDataLocationInUse())
                 {
-                    var targetDestination = updateManager.RootAppDirectory +
-                                            $"\\app-{newReleaseVersion}\\{DataLocation.PortableFolderName}";
+                    var targetDestination = Path.Combine(RootAppDir(), DataLocation.PortableFolderName);
                     FilesFolders.CopyAll(DataLocation.PortableDataPath, targetDestination, (s) => _api.ShowMsgBox(s));
                     if (!FilesFolders.VerifyBothFolderFilesEqual(DataLocation.PortableDataPath, targetDestination,
                             (s) => _api.ShowMsgBox(s)))
                         _api.ShowMsgBox(Localize.update_flowlauncher_fail_moving_portable_user_profile_data(DataLocation.PortableDataPath, targetDestination));
                 }
-                else
-                {
-                    await updateManager.CreateUninstallerRegistryEntry().ConfigureAwait(false);
-                }
 
-                var newVersionTips = NewVersionTips(newReleaseVersion.ToString());
+                var newVersionTips = NewVersionTips(newRelease.Version.ToNormalizedString());
 
                 _api.LogInfo(ClassName, $"Update success:{newVersionTips}");
 
                 if (_api.ShowMsgBox(newVersionTips, Localize.update_flowlauncher_new_update(),
                         MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    UpdateManager.RestartApp(Constant.ApplicationFileName);
+                    updateManager.ApplyUpdatesAndRestart(newRelease);
+                }
+                else
+                {
+                    updateManager.WaitExitThenApplyUpdates(newRelease);
                 }
             }
             catch (Exception e)
@@ -117,34 +109,36 @@ namespace Flow.Launcher.Core
             }
         }
 
-        [UsedImplicitly]
-        private class GithubRelease
+        public static void RecoverPortableData()
         {
-            [JsonPropertyName("prerelease")] public bool Prerelease { get; [UsedImplicitly] set; }
+            try
+            {
+                var locator = CurrentLocator();
+                var stagedPortableDataPath = Path.Combine(locator.RootAppDir!, DataLocation.PortableFolderName);
 
-            [JsonPropertyName("published_at")] public DateTime PublishedAt { get; [UsedImplicitly] set; }
+                if (!Directory.Exists(stagedPortableDataPath))
+                    return;
 
-            [JsonPropertyName("html_url")] public string HtmlUrl { get; [UsedImplicitly] set; }
+                FilesFolders.CopyAll(stagedPortableDataPath,
+                    Path.Combine(locator.AppContentDir!, DataLocation.PortableFolderName), null);
+                Directory.Delete(stagedPortableDataPath, true);
+            }
+            catch (Exception)
+            {
+            }
         }
 
-        // https://github.com/Squirrel/Squirrel.Windows/blob/master/src/Squirrel/UpdateManager.Factory.cs
-        private static async Task<UpdateManager> GitHubUpdateManagerAsync(string repository)
+        private static IVelopackLocator CurrentLocator()
         {
-            var uri = new Uri(repository);
-            var api = $"https://api.github.com/repos{uri.AbsolutePath}/releases";
+            if (VelopackLocator.IsCurrentSet)
+                return VelopackLocator.Current;
 
-            await using var jsonStream = await Http.GetStreamAsync(api).ConfigureAwait(false);
+            return VelopackLocator.CreateDefaultForPlatform();
+        }
 
-            var releases = await JsonSerializer.DeserializeAsync<List<GithubRelease>>(jsonStream).ConfigureAwait(false);
-            var latest = releases.Where(r => !r.Prerelease).OrderByDescending(r => r.PublishedAt).First();
-            var latestUrl = latest.HtmlUrl.Replace("/tag/", "/download/");
-
-            var client = new WebClient { Proxy = Http.WebProxy };
-            var downloader = new FileDownloader(client);
-
-            var manager = new UpdateManager(latestUrl, urlDownloader: downloader);
-
-            return manager;
+        private static string RootAppDir()
+        {
+            return CurrentLocator().RootAppDir ?? Constant.RootDirectory;
         }
 
         private static string NewVersionTips(string version)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -80,6 +81,36 @@ namespace Flow.Launcher.Helper
         public static void Cleanup()
         {
             SingleInstanceMutex?.ReleaseMutex();
+        }
+
+        public static void Restart()
+        {
+            Action restart = () =>
+            {
+                try
+                {
+                    SingleInstanceMutex?.ReleaseMutex();
+                }
+                catch (ApplicationException)
+                {
+                }
+
+                var fileName = Process.GetCurrentProcess().MainModule?.FileName ?? Environment.ProcessPath;
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/C choice /C Y /N /D Y /T 1 & START \"\" \"{fileName}\"",
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    CreateNoWindow = true
+                };
+                Process.Start(startInfo);
+                Application.Current?.Shutdown();
+            };
+
+            if (Application.Current?.Dispatcher.CheckAccess() == false)
+                Application.Current.Dispatcher.Invoke(restart);
+            else
+                restart();
         }
 
         #endregion

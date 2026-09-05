@@ -26,6 +26,7 @@ using iNKORE.UI.WPF.Modern.Common;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.VisualStudio.Threading;
+using Velopack;
 
 namespace Flow.Launcher
 {
@@ -128,6 +129,10 @@ namespace Flow.Launcher
         [STAThread]
         public static void Main()
         {
+            VelopackApp.Build()
+                .OnAfterUpdateFastCallback(x => Updater.RecoverPortableData())
+                .Run();
+
             // Initialize settings so that we can get language code
             try
             {

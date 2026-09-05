@@ -60,9 +60,8 @@
     <PackageReference Include="Meziantou.Framework.Win32.Jobs" Version="3.4.5" />
     <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="3.0.1" />
     <PackageReference Include="SemanticVersioning" Version="3.0.0" />
-    <!-- Do not upgrade this to higher version since higher version removes UpdateManager instance -->
-    <PackageReference Include="squirrel.windows" Version="1.9.0" NoWarn="NU1701" />
     <PackageReference Include="StreamJsonRpc" Version="2.22.11" />
+    <PackageReference Include="Velopack" Version="1.2.0" />
   </ItemGroup>
 
   <PropertyGroup>
