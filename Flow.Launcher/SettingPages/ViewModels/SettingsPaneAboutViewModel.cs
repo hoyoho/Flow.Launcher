@@ -41,7 +41,6 @@ public partial class SettingsPaneAboutViewModel : BaseModel
     }
 
     public string Website => Constant.Website;
-    public string SponsorPage => Constant.SponsorPage;
     public string ReleaseNotes => _updater.GitHubRepository + "/releases/latest";
     public string Documentation => Constant.Documentation;
     public string Docs => Constant.Docs;
@@ -414,11 +413,5 @@ public partial class SettingsPaneAboutViewModel : BaseModel
     {
         var releaseNotesWindow = new ReleaseNotesWindow();
         releaseNotesWindow.Show();
-    }
-
-    [RelayCommand]
-    private void OpenSponsorPage()
-    {
-        App.API.OpenUrl(SponsorPage);
     }
 }

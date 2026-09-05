@@ -2528,7 +2528,7 @@
                                         x:Name="TopNavOverflowButton"
                                         Grid.Column="4"
                                         Margin="{DynamicResource TopNavigationViewOverflowButtonMargin}"
-                                        Content="More"
+                                        Content="{DynamicResource more}"
                                         Style="{StaticResource NavigationViewOverflowButtonStyleWhenPaneOnTop}"
                                         Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.OverflowButtonVisibility}">
 

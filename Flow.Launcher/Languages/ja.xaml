@@ -705,4 +705,26 @@
     <system:String x:Key="FileSize">ファイルサイズ</system:String>
     <system:String x:Key="Created">作成日時</system:String>
     <system:String x:Key="LastModified">最終更新日時</system:String>
+    <system:String x:Key="more">その他</system:String>
+    <system:String x:Key="UsePolyphonicPhraseOverrides">Use polyphonic phrase pronunciations</system:String>
+    <system:String x:Key="UsePolyphonicPhraseOverridesToolTip">Use phrase-level pronunciation data to improve Pinyin conversion for polyphonic Chinese characters. This may use additional memory.</system:String>
+    <system:String x:Key="CodeHighlightTheme">Code Highlight Theme</system:String>
+    <system:String x:Key="CodeHighlightThemeTooltip">Syntax highlighting theme for code blocks in the markdown preview pane.</system:String>
+    <system:String x:Key="CodeHighlightThemeAuto">Auto (match color scheme)</system:String>
+    <system:String x:Key="CodeHighlightThemeVSCodeLight">VS Code Light</system:String>
+    <system:String x:Key="CodeHighlightThemeVSCodeDarkPlus">VS Code Dark+</system:String>
+    <system:String x:Key="CodeHighlightThemeCatppuccinMacchiato">Catppuccin Macchiato</system:String>
+    <system:String x:Key="CodeHighlightThemeOneDark">One Dark</system:String>
+    <system:String x:Key="openWelcomeWindow">Open Welcome Window</system:String>
+    <system:String x:Key="openFolderButton">Open Folder</system:String>
+    <system:String x:Key="devtoolsReportWindow">Report Window</system:String>
+    <system:String x:Key="devtoolsProgressWindow">Progress Window</system:String>
+    <system:String x:Key="devtoolsPluginUpdateWindow">Plugin Update Window</system:String>
+    <system:String x:Key="devtoolsMessageBoxWindow">Message Box Window</system:String>
+    <system:String x:Key="devtoolsMessageBoxOkLabel">OK</system:String>
+    <system:String x:Key="devtoolsMessageBoxOkCancelLabel">OK / Cancel</system:String>
+    <system:String x:Key="devtoolsMessageBoxYesNoLabel">Yes / No</system:String>
+    <system:String x:Key="devtoolsMessageBoxYesNoCancelLabel">Yes / No / Cancel</system:String>
+    <system:String x:Key="devtoolsMessageBoxTestMessage">This is a test message box.</system:String>
+    <system:String x:Key="devtoolsOpenTestWindow">Open Test Window</system:String>
 </ResourceDictionary>

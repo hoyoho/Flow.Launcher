@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:settingsVm="clr-namespace:Flow.Launcher.SettingPages.ViewModels"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    Title="About"
+    Title="{DynamicResource about}"
     d:DataContext="{d:DesignInstance Type=settingsVm:SettingsPaneAboutViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -40,12 +40,6 @@
                         x:Name="UpdateAppButton"
                         Command="{Binding UpdateAppCommand}"
                         Content="{DynamicResource checkUpdates}" />
-                    <Button
-                        Height="{Binding ElementName=UpdateAppButton, Path=ActualHeight}"
-                        Command="{Binding OpenSponsorPageCommand}"
-                        Content="{DynamicResource BecomeASponsor}"
-                        Cursor="Hand"
-                        Style="{StaticResource AccentButtonStyle}" />
                 </ikw:SimpleStackPanel>
             </ui:SettingsCard>
 

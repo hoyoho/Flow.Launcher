@@ -705,4 +705,26 @@ If you add an '@' prefix while inputting a shortcut, it matches any position in 
     <system:String x:Key="FileSize">File Size</system:String>
     <system:String x:Key="Created">Created</system:String>
     <system:String x:Key="LastModified">Last Modified</system:String>
+    <system:String x:Key="more">更多</system:String>
+    <system:String x:Key="UsePolyphonicPhraseOverrides">使用多音字片語讀音</system:String>
+    <system:String x:Key="UsePolyphonicPhraseOverridesToolTip">使用片語層級的讀音資料，改善多音漢字的拼音轉換。這可能佔用更多記憶體。</system:String>
+    <system:String x:Key="CodeHighlightTheme">程式碼醒目提示主題</system:String>
+    <system:String x:Key="CodeHighlightThemeTooltip">Markdown 預覽窗格中程式碼區塊的語法醒目提示主題。</system:String>
+    <system:String x:Key="CodeHighlightThemeAuto">自動（符合配色配置）</system:String>
+    <system:String x:Key="CodeHighlightThemeVSCodeLight">VS Code 淺色</system:String>
+    <system:String x:Key="CodeHighlightThemeVSCodeDarkPlus">VS Code 深色+</system:String>
+    <system:String x:Key="CodeHighlightThemeCatppuccinMacchiato">Catppuccin Macchiato</system:String>
+    <system:String x:Key="CodeHighlightThemeOneDark">One Dark</system:String>
+    <system:String x:Key="openWelcomeWindow">開啟歡迎視窗</system:String>
+    <system:String x:Key="openFolderButton">開啟資料夾</system:String>
+    <system:String x:Key="devtoolsReportWindow">報告視窗</system:String>
+    <system:String x:Key="devtoolsProgressWindow">進度視窗</system:String>
+    <system:String x:Key="devtoolsPluginUpdateWindow">外掛程式更新視窗</system:String>
+    <system:String x:Key="devtoolsMessageBoxWindow">訊息方塊視窗</system:String>
+    <system:String x:Key="devtoolsMessageBoxOkLabel">確定</system:String>
+    <system:String x:Key="devtoolsMessageBoxOkCancelLabel">確定 / 取消</system:String>
+    <system:String x:Key="devtoolsMessageBoxYesNoLabel">是 / 否</system:String>
+    <system:String x:Key="devtoolsMessageBoxYesNoCancelLabel">是 / 否 / 取消</system:String>
+    <system:String x:Key="devtoolsMessageBoxTestMessage">這是一則測試訊息。</system:String>
+    <system:String x:Key="devtoolsOpenTestWindow">開啟測試視窗</system:String>
 </ResourceDictionary>

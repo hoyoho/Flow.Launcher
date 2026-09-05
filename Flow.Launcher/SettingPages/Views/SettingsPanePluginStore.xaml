@@ -9,7 +9,7 @@
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
     xmlns:viewModels="clr-namespace:Flow.Launcher.SettingPages.ViewModels"
     xmlns:wpftk="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
-    Title="PluginStore"
+    Title="{DynamicResource pluginStore}"
     d:DataContext="{d:DesignInstance viewModels:SettingsPanePluginStoreViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"

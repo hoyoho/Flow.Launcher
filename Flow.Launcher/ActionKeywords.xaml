@@ -76,8 +76,7 @@
             FontSize="14"
             FontWeight="SemiBold"
             Foreground="{DynamicResource Color05B}"
-            IsReadOnly="True"
-            Text="List of old keyword(s)" />
+            IsReadOnly="True" />
 
         <TextBlock
             Grid.Row="4"

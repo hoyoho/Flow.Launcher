@@ -55,15 +55,11 @@
                     x:Name="tbTitle"
                     FontSize="16"
                     FontWeight="Medium"
-                    Foreground="#37392c">
-                    Title
-                </TextBlock>
+                    Foreground="#37392c" />
                 <TextBlock
                     x:Name="tbSubTitle"
                     Grid.Row="1"
-                    Foreground="#8e94a4">
-                    sdfdsf
-                </TextBlock>
+                    Foreground="#8e94a4" />
             </Grid>
             <Image
                 x:Name="imgClose"
@@ -78,7 +74,6 @@
             x:Name="btn"
             Margin="5 0 5 5"
             HorizontalAlignment="Stretch"
-            Content="fwafaw"
             Foreground="#dcdcdc" />
     </StackPanel>
 </Window>

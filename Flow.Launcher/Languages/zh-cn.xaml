@@ -705,4 +705,26 @@
     <system:String x:Key="FileSize">文件大小</system:String>
     <system:String x:Key="Created">创建于</system:String>
     <system:String x:Key="LastModified">最后修改于</system:String>
+    <system:String x:Key="more">更多</system:String>
+    <system:String x:Key="UsePolyphonicPhraseOverrides">使用多音字短语读音</system:String>
+    <system:String x:Key="UsePolyphonicPhraseOverridesToolTip">使用短语级读音数据，改善多音汉字的拼音转换。这可能会占用更多内存。</system:String>
+    <system:String x:Key="CodeHighlightTheme">代码高亮主题</system:String>
+    <system:String x:Key="CodeHighlightThemeTooltip">Markdown 预览中代码块的语法高亮主题。</system:String>
+    <system:String x:Key="CodeHighlightThemeAuto">自动（匹配配色方案）</system:String>
+    <system:String x:Key="CodeHighlightThemeVSCodeLight">VS Code 浅色</system:String>
+    <system:String x:Key="CodeHighlightThemeVSCodeDarkPlus">VS Code 深色+</system:String>
+    <system:String x:Key="CodeHighlightThemeCatppuccinMacchiato">Catppuccin Macchiato</system:String>
+    <system:String x:Key="CodeHighlightThemeOneDark">One Dark</system:String>
+    <system:String x:Key="openWelcomeWindow">打开欢迎窗口</system:String>
+    <system:String x:Key="openFolderButton">打开文件夹</system:String>
+    <system:String x:Key="devtoolsReportWindow">报告窗口</system:String>
+    <system:String x:Key="devtoolsProgressWindow">进度窗口</system:String>
+    <system:String x:Key="devtoolsPluginUpdateWindow">插件更新窗口</system:String>
+    <system:String x:Key="devtoolsMessageBoxWindow">消息框窗口</system:String>
+    <system:String x:Key="devtoolsMessageBoxOkLabel">确定</system:String>
+    <system:String x:Key="devtoolsMessageBoxOkCancelLabel">确定 / 取消</system:String>
+    <system:String x:Key="devtoolsMessageBoxYesNoLabel">是 / 否</system:String>
+    <system:String x:Key="devtoolsMessageBoxYesNoCancelLabel">是 / 否 / 取消</system:String>
+    <system:String x:Key="devtoolsMessageBoxTestMessage">这是一条测试消息。</system:String>
+    <system:String x:Key="devtoolsOpenTestWindow">打开测试窗口</system:String>
 </ResourceDictionary>
