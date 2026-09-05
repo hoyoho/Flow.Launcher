@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 using Flow.Launcher.Plugin;
@@ -14,11 +15,23 @@ namespace Flow.Launcher.Plugin.ClipboardSnippets
 
         private const int PreviewMaxLength = 80;
 
+        private const int DefaultResultCount = 6;
+
         public List<Result> Query(Query query)
         {
             var search = query.Search?.Trim();
+
             if (string.IsNullOrWhiteSpace(search))
-                return [];
+            {
+                if (query.IsHomeQuery)
+                    return [];
+
+                return Settings.Snippets
+                    .Where(snippet => !string.IsNullOrWhiteSpace(snippet.Title))
+                    .Take(DefaultResultCount)
+                    .Select(snippet => CreateResult(snippet, 5))
+                    .ToList();
+            }
 
             var results = new List<Result>();
             foreach (var snippet in Settings.Snippets)
@@ -30,23 +43,28 @@ namespace Flow.Launcher.Plugin.ClipboardSnippets
                 if (!match.IsSearchPrecisionScoreMet())
                     continue;
 
-                var capturedSnippet = snippet;
-                results.Add(new Result
-                {
-                    Title = snippet.Title,
-                    SubTitle = Preview(snippet.Content),
-                    IcoPath = IconPath,
-                    Score = match.Score,
-                    TitleHighlightData = match.MatchData,
-                    Action = _ =>
-                    {
-                        CopyToClipboard(capturedSnippet);
-                        return true;
-                    }
-                });
+                results.Add(CreateResult(snippet, match.Score, match.MatchData));
             }
 
             return results;
+        }
+
+        private static Result CreateResult(Snippet snippet, int score, IList<int> highlightData = null)
+        {
+            var capturedSnippet = snippet;
+            return new Result
+            {
+                Title = snippet.Title,
+                SubTitle = Preview(snippet.Content),
+                IcoPath = IconPath,
+                Score = score,
+                TitleHighlightData = highlightData,
+                Action = _ =>
+                {
+                    CopyToClipboard(capturedSnippet);
+                    return true;
+                }
+            };
         }
 
         private static void CopyToClipboard(Snippet snippet)
