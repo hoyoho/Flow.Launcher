@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -282,7 +282,8 @@ public partial class SettingsPanePluginsViewModel : BaseModel
             if (Version.TryParse(currentVersion, out var current) &&
                 Version.TryParse(newVersion, out var latest) &&
                 current < latest &&
-                !PublicApi.Instance.PluginModified(vm.PluginPair.Metadata.ID))
+                !PublicApi.Instance.PluginModified(vm.PluginPair.Metadata.ID) &&
+                !PluginInstaller.BuiltInPluginIds.Contains(vm.PluginPair.Metadata.ID))
             {
                 vm.UpdateInfo = new PluginUpdateInfo
                 {
