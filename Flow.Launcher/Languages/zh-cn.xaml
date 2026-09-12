@@ -595,7 +595,7 @@
     <system:String x:Key="commonCancel">取消</system:String>
     <system:String x:Key="commonReset">重置</system:String>
     <system:String x:Key="commonDelete">删除</system:String>
-    <system:String x:Key="commonOK">更新</system:String>
+    <system:String x:Key="commonOK">确定</system:String>
     <system:String x:Key="commonYes">是</system:String>
     <system:String x:Key="commonNo">否</system:String>
     <system:String x:Key="commonBackground">后台</system:String>
