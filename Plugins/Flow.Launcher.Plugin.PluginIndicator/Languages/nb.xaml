@@ -6,4 +6,32 @@
     <system:String x:Key="flowlauncher_plugin_pluginindicator_plugin_name">Indikator for programtillegg</system:String>
     <system:String x:Key="flowlauncher_plugin_pluginindicator_plugin_description">Viser forslag til handlingsord for programtillegg</system:String>
 
+    <system:String x:Key="ar"></system:String>
+    <system:String x:Key="cs"></system:String>
+    <system:String x:Key="da"></system:String>
+    <system:String x:Key="de"></system:String>
+    <system:String x:Key="es"></system:String>
+    <system:String x:Key="es-419"></system:String>
+    <system:String x:Key="fr"></system:String>
+    <system:String x:Key="he"></system:String>
+    <system:String x:Key="it"></system:String>
+    <system:String x:Key="ja"></system:String>
+    <system:String x:Key="ko"></system:String>
+    <system:String x:Key="nb"></system:String>
+    <system:String x:Key="nb-NO"></system:String>
+    <system:String x:Key="nl"></system:String>
+    <system:String x:Key="pl"></system:String>
+    <system:String x:Key="pt-br"></system:String>
+    <system:String x:Key="pt-pt"></system:String>
+    <system:String x:Key="ru"></system:String>
+    <system:String x:Key="sk"></system:String>
+    <system:String x:Key="sr"></system:String>
+    <system:String x:Key="sr-Cyrl-RS"></system:String>
+    <system:String x:Key="tr"></system:String>
+    <system:String x:Key="uk-UA"></system:String>
+    <system:String x:Key="vi"></system:String>
+    <system:String x:Key="zh-cn"></system:String>
+    <system:String x:Key="zh-tw"></system:String>
+    <system:String x:Key="flowlauncher_plugin_pluginindicator_plugin_settings_subtitle">Åpne innstillingssiden for {0}-pluginen</system:String>
+    <system:String x:Key="flowlauncher_plugin_pluginindicator_plugin_settings_title">Innstillinger: {0}</system:String>
 </ResourceDictionary>

@@ -6,4 +6,32 @@
     <system:String x:Key="flowlauncher_plugin_pluginindicator_plugin_name">Indicateur de Plugin</system:String>
     <system:String x:Key="flowlauncher_plugin_pluginindicator_plugin_description">Fournit des suggestions de mots d'action pour les plugins</system:String>
 
+    <system:String x:Key="ar"></system:String>
+    <system:String x:Key="cs"></system:String>
+    <system:String x:Key="da"></system:String>
+    <system:String x:Key="de"></system:String>
+    <system:String x:Key="es"></system:String>
+    <system:String x:Key="es-419"></system:String>
+    <system:String x:Key="fr"></system:String>
+    <system:String x:Key="he"></system:String>
+    <system:String x:Key="it"></system:String>
+    <system:String x:Key="ja"></system:String>
+    <system:String x:Key="ko"></system:String>
+    <system:String x:Key="nb"></system:String>
+    <system:String x:Key="nb-NO"></system:String>
+    <system:String x:Key="nl"></system:String>
+    <system:String x:Key="pl"></system:String>
+    <system:String x:Key="pt-br"></system:String>
+    <system:String x:Key="pt-pt"></system:String>
+    <system:String x:Key="ru"></system:String>
+    <system:String x:Key="sk"></system:String>
+    <system:String x:Key="sr"></system:String>
+    <system:String x:Key="sr-Cyrl-RS"></system:String>
+    <system:String x:Key="tr"></system:String>
+    <system:String x:Key="uk-UA"></system:String>
+    <system:String x:Key="vi"></system:String>
+    <system:String x:Key="zh-cn"></system:String>
+    <system:String x:Key="zh-tw"></system:String>
+    <system:String x:Key="flowlauncher_plugin_pluginindicator_plugin_settings_subtitle">Ouvrir la page de paramètres du plug-in {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_pluginindicator_plugin_settings_title">Paramètres : {0}</system:String>
 </ResourceDictionary>

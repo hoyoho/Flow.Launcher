@@ -30,4 +30,31 @@
     <system:String x:Key="flowlauncher_plugin_browserbookmark_guideMessage02">Per esempio: il motore di Brave è Chromium, e la sua posizione predefinita dei segnalibri è: &quot;%LOCALAPPDATA%\BraveSoftware\Brave-Browser\UserData&quot;. Per il motore di Firefox, la directory dei segnalibri è la cartella dei dati utente che contiene il file places.sqlite.</system:String>
     <system:String x:Key="flowlauncher_plugin_browserbookmark_enable_favicons">Load favicons (can be time consuming during startup)</system:String>
 
+    <system:String x:Key="ar"></system:String>
+    <system:String x:Key="cs"></system:String>
+    <system:String x:Key="da"></system:String>
+    <system:String x:Key="de"></system:String>
+    <system:String x:Key="es"></system:String>
+    <system:String x:Key="es-419"></system:String>
+    <system:String x:Key="fr"></system:String>
+    <system:String x:Key="he"></system:String>
+    <system:String x:Key="it"></system:String>
+    <system:String x:Key="ja"></system:String>
+    <system:String x:Key="ko"></system:String>
+    <system:String x:Key="nb"></system:String>
+    <system:String x:Key="nb-NO"></system:String>
+    <system:String x:Key="nl"></system:String>
+    <system:String x:Key="pl"></system:String>
+    <system:String x:Key="pt-br"></system:String>
+    <system:String x:Key="pt-pt"></system:String>
+    <system:String x:Key="ru"></system:String>
+    <system:String x:Key="sk"></system:String>
+    <system:String x:Key="sr"></system:String>
+    <system:String x:Key="sr-Cyrl-RS"></system:String>
+    <system:String x:Key="tr"></system:String>
+    <system:String x:Key="uk-UA"></system:String>
+    <system:String x:Key="vi"></system:String>
+    <system:String x:Key="zh-cn"></system:String>
+    <system:String x:Key="zh-tw"></system:String>
+    <system:String x:Key="flowlauncher_plugin_browserbookmark_open_failed">Impossibile aprire l'URL nel browser</system:String>
 </ResourceDictionary>

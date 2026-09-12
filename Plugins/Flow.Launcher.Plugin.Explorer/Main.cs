@@ -1,4 +1,4 @@
-﻿using Flow.Launcher.Plugin.Explorer.Helper;
+using Flow.Launcher.Plugin.Explorer.Helper;
 using Flow.Launcher.Plugin.Explorer.Search;
 using Flow.Launcher.Plugin.Explorer.Search.Everything;
 using Flow.Launcher.Plugin.Explorer.ViewModels;
@@ -71,7 +71,7 @@ namespace Flow.Launcher.Plugin.Explorer
                         Title = e.Message,
                         SubTitle = e is EngineNotAvailableException { Resolution: { } resolution }
                             ? resolution
-                            : "Enter to copy the message to clipboard",
+                            : Context.API.GetTranslation("plugin_explorer_copy_message_subtitle"),
                         Score = 501,
                         IcoPath = e is EngineNotAvailableException { ErrorIcon: { } iconPath }
                             ? iconPath
