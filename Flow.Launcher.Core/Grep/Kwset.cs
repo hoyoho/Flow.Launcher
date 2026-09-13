@@ -128,8 +128,7 @@ namespace Flow.Launcher.Core.Grep
             for (int i = 0; i < n - 1; i++) // last char doesn't contribute
                 _bmBadChar[p[i]] = n - 1 - i;
 
-            // Good-suffix table.
-            _bmGoodSuffix = new int[n];
+            // Good-suffix table (allocated inside BuildGoodSuffix).
             BuildGoodSuffix(p, n);
         }
 
@@ -140,21 +139,20 @@ namespace Flow.Launcher.Core.Grep
         /// </summary>
         private void BuildGoodSuffix(char[] p, int n)
         {
-            for (int idx = 0; idx < n; idx++)
-                _bmGoodSuffix[idx] = n; // default shift
-
-            // Compute the border array for the reversed pattern (Z-like
-            // approach). A "border" of a string is a proper prefix that is
-            // also a suffix.
+            // Compute the good-suffix shift table using the border-array
+            // method (Gusfield 1997, ch. 2). Both arrays are size n+1.
+            // shift[k] holds the shift amount when the matched suffix begins
+            // at pattern position k (i.e. mismatch occurred at position k-1).
             var border = new int[n + 1];
-            border[n] = n + 1;
+            var shift = new int[n + 1];
             int i = n, j = n + 1;
+            border[i] = j;
             while (i > 0)
             {
                 while (j <= n && p[i - 1] != p[j - 1])
                 {
-                    if (_bmGoodSuffix[j - 1] == n)
-                        _bmGoodSuffix[j - 1] = j - i;
+                    if (shift[j] == 0)
+                        shift[j] = j - i;
                     j = border[j];
                 }
                 i--;
@@ -162,15 +160,16 @@ namespace Flow.Launcher.Core.Grep
                 border[i] = j;
             }
 
-            // Second pass: propagate the border-derived shifts.
             j = border[0];
-            for (int k = 0; k <= n; k++)
+            for (i = 0; i <= n; i++)
             {
-                if (_bmGoodSuffix[k] == n)
-                    _bmGoodSuffix[k] = j;
-                if (k == j)
+                if (shift[i] == 0)
+                    shift[i] = j;
+                if (i == j)
                     j = border[j];
             }
+
+            _bmGoodSuffix = shift;
         }
 
         private KwsetMatch? BoyerMooreSearch(string text)
@@ -213,7 +212,10 @@ namespace Flow.Launcher.Core.Grep
                     return new KwsetMatch(0, ti + 1, n); // match
 
                 char bad = T(text[ti]);
-                int shift = Math.Max(_bmBadChar[bad], _bmGoodSuffix[pi]);
+                // pi is the mismatch position (0-indexed from left).
+                // The matched suffix is p[pi+1..n-1], so the good-suffix
+                // shift is stored at index pi+1.
+                int shift = Math.Max(_bmBadChar[bad], _bmGoodSuffix[pi + 1]);
                 pos += shift;
             }
 

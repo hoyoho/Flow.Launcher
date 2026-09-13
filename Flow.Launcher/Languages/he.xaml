@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">קובץ</system:String>
     <system:String x:Key="folderTitle">תיקייה</system:String>
     <system:String x:Key="textTitle">טקסט</system:String>
-    <system:String x:Key="GameMode">מצב משחק</system:String>
-    <system:String x:Key="GameModeToolTip">השהה את השימוש במקשי קיצור.</system:String>
+    <system:String x:Key="SilentMode">מצב משחק</system:String>
+    <system:String x:Key="SilentModeToolTip">השהה את השימוש במקשי קיצור.</system:String>
     <system:String x:Key="PositionReset">איפוס מיקום</system:String>
     <system:String x:Key="PositionResetToolTip">אפס את מיקום חלון החיפוש</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">הקלד כאן כדי לחפש</system:String>
@@ -383,7 +383,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">פתח תפריט הקשר מקומי</system:String>
     <system:String x:Key="SettingWindowHotkey">פתח חלון הגדרות</system:String>
     <system:String x:Key="CopyFilePathHotkey">העתק את נתיב הקובץ</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">הפעל או כבה מצב משחק</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">הפעל או כבה מצב משחק</system:String>
     <system:String x:Key="ToggleHistoryHotkey">הפעל או כבה היסטוריה</system:String>
     <system:String x:Key="OpenContainFolderHotkey">פתח תיקייה מכילה</system:String>
     <system:String x:Key="RunAsAdminHotkey">הרץ כמנהל</system:String>

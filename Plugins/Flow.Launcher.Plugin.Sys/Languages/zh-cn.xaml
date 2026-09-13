@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!--  Setting  -->
@@ -28,7 +28,7 @@
     <system:String x:Key="flowlauncher_plugin_sys_open_log_location_cmd">打开日志文件夹</system:String>
     <system:String x:Key="flowlauncher_plugin_sys_open_docs_tips_cmd">Flow Launcher 提示</system:String>
     <system:String x:Key="flowlauncher_plugin_sys_open_userdata_location_cmd">Flow Launcher 用户数据文件夹</system:String>
-    <system:String x:Key="flowlauncher_plugin_sys_toggle_game_mode_cmd">切换游戏模式</system:String>
+    <system:String x:Key="flowlauncher_plugin_sys_toggle_silent_mode_cmd">切换静默模式</system:String>
     <system:String x:Key="flowlauncher_plugin_sys_theme_selector_cmd">设置Flow Launcher的主题</system:String>
 
     <system:String x:Key="flowlauncher_plugin_sys_edit">编辑</system:String>
@@ -53,7 +53,7 @@
     <system:String x:Key="flowlauncher_plugin_sys_check_for_update">检查新的 Flow Launcher 更新</system:String>
     <system:String x:Key="flowlauncher_plugin_sys_open_docs_tips">访问 Flow Launcher 的文档以获取更多帮助以及使用技巧</system:String>
     <system:String x:Key="flowlauncher_plugin_sys_open_userdata_location">打开Flow Launcher 设置文件夹</system:String>
-    <system:String x:Key="flowlauncher_plugin_sys_toggle_game_mode">切换游戏模式</system:String>
+    <system:String x:Key="flowlauncher_plugin_sys_toggle_silent_mode">切换静默模式</system:String>
     <system:String x:Key="flowlauncher_plugin_sys_theme_selector">快速更改Flow Launcher的主题</system:String>
 
     <!--  Dialogs  -->

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">Archivo</system:String>
     <system:String x:Key="folderTitle">Carpeta</system:String>
     <system:String x:Key="textTitle">Texto</system:String>
-    <system:String x:Key="GameMode">Modo Juego</system:String>
-    <system:String x:Key="GameModeToolTip">Suspende el uso de atajos de teclado.</system:String>
+    <system:String x:Key="SilentMode">Modo Juego</system:String>
+    <system:String x:Key="SilentModeToolTip">Suspende el uso de atajos de teclado.</system:String>
     <system:String x:Key="PositionReset">Restablecer posición</system:String>
     <system:String x:Key="PositionResetToolTip">Restablece la posición de la ventana de búsqueda</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Escribir aquí para buscar</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Abrir menú contextual nativo</system:String>
     <system:String x:Key="SettingWindowHotkey">Abrir ventana de configuración</system:String>
     <system:String x:Key="CopyFilePathHotkey">Copiar ruta del archivo</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Cambiar a Modo Juego</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Cambiar a Modo Juego</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Mostrar/Ocultar historial</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Abrir carpeta contenedora</system:String>
     <system:String x:Key="RunAsAdminHotkey">Ejecutar como administrador</system:String>

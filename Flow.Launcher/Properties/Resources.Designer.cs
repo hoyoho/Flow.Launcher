@@ -69,11 +69,11 @@ namespace Flow.Launcher.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
-        internal static System.Drawing.Icon gamemode
+        internal static System.Drawing.Icon silentmode
         {
             get
             {
-                object obj = ResourceManager.GetObject("gamemode", resourceCulture);
+                object obj = ResourceManager.GetObject("silentmode", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

@@ -150,7 +150,7 @@
             Modifiers="{Binding OpenResultCommandModifiers}" />
         <KeyBinding
             Key="F12"
-            Command="{Binding ToggleGameModeCommand}"
+            Command="{Binding ToggleSilentModeCommand}"
             Modifiers="Ctrl" />
         <KeyBinding
             Key="C"

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">Soubor</system:String>
     <system:String x:Key="folderTitle">Složka</system:String>
     <system:String x:Key="textTitle">Text</system:String>
-    <system:String x:Key="GameMode">Herní režim</system:String>
-    <system:String x:Key="GameModeToolTip">Potlačit užívání klávesových zkratek.</system:String>
+    <system:String x:Key="SilentMode">Herní režim</system:String>
+    <system:String x:Key="SilentModeToolTip">Potlačit užívání klávesových zkratek.</system:String>
     <system:String x:Key="PositionReset">Obnovit pozici</system:String>
     <system:String x:Key="PositionResetToolTip">Reset search window position</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Type here to search</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Open Native Context Menu</system:String>
     <system:String x:Key="SettingWindowHotkey">Otevřít okno s nastavením</system:String>
     <system:String x:Key="CopyFilePathHotkey">Copy File Path</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Toggle Game Mode</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Toggle Silent Mode</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Toggle History</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Otevřít umístění složky</system:String>
     <system:String x:Key="RunAsAdminHotkey">Run As Admin</system:String>

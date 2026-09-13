@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@ Kliknij &quot;nie&quot;, jeśli jest już zainstalowany. Zostaniesz wtedy popros
     <system:String x:Key="fileTitle">Plik</system:String>
     <system:String x:Key="folderTitle">Folder</system:String>
     <system:String x:Key="textTitle">Tekst</system:String>
-    <system:String x:Key="GameMode">Tryb grania</system:String>
-    <system:String x:Key="GameModeToolTip">Wstrzymaj używanie skrótów.</system:String>
+    <system:String x:Key="SilentMode">Tryb grania</system:String>
+    <system:String x:Key="SilentModeToolTip">Wstrzymaj używanie skrótów.</system:String>
     <system:String x:Key="PositionReset">Resetowanie pozycji</system:String>
     <system:String x:Key="PositionResetToolTip">Zresetuj pozycję okna wyszukiwania</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Wpisz tutaj, aby wyszukać</system:String>
@@ -383,7 +383,7 @@ Kliknij &quot;nie&quot;, jeśli jest już zainstalowany. Zostaniesz wtedy popros
     <system:String x:Key="OpenNativeContextMenuHotkey">Otwórz natywne menu kontekstowe</system:String>
     <system:String x:Key="SettingWindowHotkey">Otwórz okno ustawień</system:String>
     <system:String x:Key="CopyFilePathHotkey">Kopiuj ścieżkę pliku</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Przełącz tryb gry</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Przełącz tryb gry</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Przełącz historię</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Otwórz folder zawierający</system:String>
     <system:String x:Key="RunAsAdminHotkey">Uruchom jako Administrator</system:String>

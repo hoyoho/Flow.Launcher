@@ -738,9 +738,9 @@ namespace Flow.Launcher.ViewModel
         }
 
         [RelayCommand]
-        public void ToggleGameMode()
+        public void ToggleSilentMode()
         {
-            GameModeStatus = !GameModeStatus;
+            SilentModeStatus = !SilentModeStatus;
         }
 
         [RelayCommand]
@@ -768,7 +768,7 @@ namespace Flow.Launcher.ViewModel
 
         public ResultsViewModel History { get; private set; }
 
-        public bool GameModeStatus { get; set; } = false;
+        public bool SilentModeStatus { get; set; } = false;
 
         private string _queryText;
         public string QueryText
@@ -2124,7 +2124,7 @@ namespace Flow.Launcher.ViewModel
         /// </summary>
         public bool ShouldIgnoreHotkeys()
         {
-            return Settings.IgnoreHotkeysOnFullscreen && Win32Helper.IsForegroundWindowFullscreen() || GameModeStatus;
+            return Settings.IgnoreHotkeysOnFullscreen && Win32Helper.IsForegroundWindowFullscreen() || SilentModeStatus;
         }
 
         #endregion

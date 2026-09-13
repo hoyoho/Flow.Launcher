@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -104,6 +104,7 @@ namespace Flow.Launcher.Infrastructure.UserSettings
         public string SelectPrevPageHotkey { get; set; } = $"PageDown";
         public string OpenContextMenuHotkey { get; set; } = $"Ctrl+O";
         public string SettingWindowHotkey { get; set; } = $"Ctrl+I";
+        public string ToggleSilentModeHotkey { get; set; } = $"Ctrl+F12";
         public string OpenHistoryHotkey { get; set; } = $"Ctrl+H";
         public string CycleHistoryUpHotkey { get; set; } = $"{KeyConstant.Alt} + Up";
         public string CycleHistoryDownHotkey { get; set; } = $"{KeyConstant.Alt} + Down";
@@ -684,7 +685,7 @@ namespace Flow.Launcher.Infrastructure.UserSettings
                 new("Enter", "HotkeyRunDesc"),
                 new("Ctrl+Enter", "OpenContainFolderHotkey"),
                 new("Alt+Enter", "HotkeyOpenResult"),
-                new("Ctrl+F12", "ToggleGameModeHotkey"),
+                new(ToggleSilentModeHotkey, "ToggleSilentModeHotkey"),
                 new("Ctrl+Shift+C", "CopyFilePathHotkey"),
 
                 new($"{OpenResultModifiers}+D1", "HotkeyOpenResultN", 1),

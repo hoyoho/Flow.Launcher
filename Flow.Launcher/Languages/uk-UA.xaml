@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">Файл</system:String>
     <system:String x:Key="folderTitle">Тека</system:String>
     <system:String x:Key="textTitle">Текст</system:String>
-    <system:String x:Key="GameMode">Режим гри</system:String>
-    <system:String x:Key="GameModeToolTip">Призупинити використання гарячих клавіш.</system:String>
+    <system:String x:Key="SilentMode">Режим гри</system:String>
+    <system:String x:Key="SilentModeToolTip">Призупинити використання гарячих клавіш.</system:String>
     <system:String x:Key="PositionReset">Скидання позиції</system:String>
     <system:String x:Key="PositionResetToolTip">Скинути положення вікна пошуку</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Напишіть тут, аби знайти</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Відкрити рідне контекстне меню</system:String>
     <system:String x:Key="SettingWindowHotkey">Відкрити вікно налаштувань</system:String>
     <system:String x:Key="CopyFilePathHotkey">Копіювати шлях файлу</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Перемкнути режим гри</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Перемкнути режим гри</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Перемкнути історію</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Відкрийте папку, що містить файл</system:String>
     <system:String x:Key="RunAsAdminHotkey">Запустити від імені адміністратора</system:String>

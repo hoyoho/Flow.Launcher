@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 
 namespace Flow.Launcher.Plugin.Sys;
@@ -112,8 +112,8 @@ public class Settings : BaseModel
         },
         new()
         {
-            Key = "Toggle Game Mode",
-            Keyword = "Toggle Game Mode"
+            Key = "Toggle Silent Mode",
+            Keyword = "Toggle Silent Mode"
         },
         new()
         {

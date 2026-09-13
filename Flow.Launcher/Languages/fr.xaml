@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">Fichier</system:String>
     <system:String x:Key="folderTitle">Dossier</system:String>
     <system:String x:Key="textTitle">Texte</system:String>
-    <system:String x:Key="GameMode">Mode jeu</system:String>
-    <system:String x:Key="GameModeToolTip">Suspend l'utilisation des raccourcis claviers.</system:String>
+    <system:String x:Key="SilentMode">Mode jeu</system:String>
+    <system:String x:Key="SilentModeToolTip">Suspend l'utilisation des raccourcis claviers.</system:String>
     <system:String x:Key="PositionReset">Réinitialiser la position</system:String>
     <system:String x:Key="PositionResetToolTip">Réinitialiser la position de la fenêtre de recherche</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Tapez ici pour rechercher</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Ouvrir le menu contextuel natif</system:String>
     <system:String x:Key="SettingWindowHotkey">Ouvrir la Fenêtre des Réglages</system:String>
     <system:String x:Key="CopyFilePathHotkey">Copier le chemin du fichier</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Basculer le mode de jeu</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Basculer le mode de jeu</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Basculer l'historique</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Ouvrir le répertoire</system:String>
     <system:String x:Key="RunAsAdminHotkey">Exécuter en tant qu'Administrateur</system:String>

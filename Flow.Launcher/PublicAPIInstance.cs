@@ -517,19 +517,19 @@ namespace Flow.Launcher
             OpenUri(appUri);
         }
 
-        public void ToggleGameMode()
+        public void ToggleSilentMode()
         {
-            _mainVM.ToggleGameMode();
+            _mainVM.ToggleSilentMode();
         }
 
-        public void SetGameMode(bool value)
+        public void SetSilentMode(bool value)
         {
-            _mainVM.GameModeStatus = value;
+            _mainVM.SilentModeStatus = value;
         }
 
-        public bool IsGameModeOn()
+        public bool IsSilentModeOn()
         {
-            return _mainVM.GameModeStatus;
+            return _mainVM.SilentModeStatus;
         }
 
         private readonly List<Func<int, int, SpecialKeyState, bool>> _globalKeyboardHandlers = new();

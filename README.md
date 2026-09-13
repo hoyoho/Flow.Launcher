@@ -229,13 +229,13 @@ Or download the [early access version](https://github.com/Flow-Launcher/Prerelea
   - If using portable, by default: `%localappdata%\FlowLauncher\app-<VersionOfYourFlowLauncher>\UserData`
   - Type `open log location` to open your logs folder, they are saved along with your user settings folder.
 
-### 🎮 Game Mode
+### 🎮 Silent Mode
 
 <img src="https://user-images.githubusercontent.com/6903107/207144711-0c5f8b2b-4b1b-44c8-b23e-c123f6b05146.png" width="200">
 
 - Pause hotkey activation when you are playing games.
 - When in search window use <kbd>Ctrl</kbd>+<kbd>F12</kbd> to toggle on/off.
-- Type `Toggle Game Mode`
+- Type `Toggle Silent Mode`
 
 <img src="https://user-images.githubusercontent.com/6903107/144858082-8b654daf-60fb-4ee6-89b2-6183b73510d1.png" width="100%">
 
@@ -313,7 +313,7 @@ Or download the [early access version](https://github.com/Flow-Launcher/Prerelea
 | <kbd>Ctrl</kbd>+<kbd>I</kbd>                                              | Open Flow's settings                            |
 | <kbd>Ctrl</kbd>+<kbd>R</kbd>                                              | Run the current query again (refresh results)   |
 | <kbd>F5</kbd>                                                             | Reload all plugin data                          |
-| <kbd>Ctrl</kbd>+<kbd>F12</kbd>                                            | Toggle Game Mode when in search window          |
+| <kbd>Ctrl</kbd>+<kbd>F12</kbd>                                            | Toggle Silent Mode when in search window          |
 | <kbd>Ctrl</kbd>+<kbd>+</kbd>,<kbd>-</kbd>                                 | Adjust maximum results shown                    |
 | <kbd>Ctrl</kbd>+<kbd>[</kbd>,<kbd>]</kbd>                                 | Adjust search window width                      |
 | <kbd>Ctrl</kbd>+<kbd>H</kbd>                                              | Open search history                             |
@@ -343,7 +343,7 @@ Or download the [early access version](https://github.com/Flow-Launcher/Prerelea
 | Index Option                       | Open Windows Search Index window                                            |
 | Flow Launcher Tips                 | Visit Flow Launcher's documentation for more help and usage tips            |
 | Flow Launcher UserData Folder      | Open the location where Flow Launcher's settings are stored                 |
-| Toggle Game Mode                   | Toggle Game Mode                                                            |
+| Toggle Silent Mode                   | Toggle Silent Mode                                                            |
 | Set Flow Launcher Theme            | Set the Flow Launcher Theme                                                 |
 
 ### 💁‍♂️ Tips

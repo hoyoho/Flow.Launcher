@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">Dosya</system:String>
     <system:String x:Key="folderTitle">Klasör</system:String>
     <system:String x:Key="textTitle">Yazı</system:String>
-    <system:String x:Key="GameMode">Oyun Modu</system:String>
-    <system:String x:Key="GameModeToolTip">Kısayol tuşlarının kullanımını durdurun.</system:String>
+    <system:String x:Key="SilentMode">Oyun Modu</system:String>
+    <system:String x:Key="SilentModeToolTip">Kısayol tuşlarının kullanımını durdurun.</system:String>
     <system:String x:Key="PositionReset">Pencere Konumunu Sıfırla</system:String>
     <system:String x:Key="PositionResetToolTip">Arama penceresinin konumunu sıfırla</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Aramak için buraya yazın</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Yerel Bağlam Menüsünü Aç</system:String>
     <system:String x:Key="SettingWindowHotkey">Ayarlar Penceresini Aç</system:String>
     <system:String x:Key="CopyFilePathHotkey">Dosya Yolunu Kopyala</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Oyun Modunu Aç/Kapat</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Oyun Modunu Aç/Kapat</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Geçmişe Kaydetmeyi Aç/Kapat</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Dosya Konumunu Aç</system:String>
     <system:String x:Key="RunAsAdminHotkey">Yönetici Olarak Çalıştır</system:String>

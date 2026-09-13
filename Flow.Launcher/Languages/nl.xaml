@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">Bestand</system:String>
     <system:String x:Key="folderTitle">Map</system:String>
     <system:String x:Key="textTitle">Tekst</system:String>
-    <system:String x:Key="GameMode">Spelmodus</system:String>
-    <system:String x:Key="GameModeToolTip">Stop het gebruik van Sneltoetsen.</system:String>
+    <system:String x:Key="SilentMode">Spelmodus</system:String>
+    <system:String x:Key="SilentModeToolTip">Stop het gebruik van Sneltoetsen.</system:String>
     <system:String x:Key="PositionReset">Positie resetten</system:String>
     <system:String x:Key="PositionResetToolTip">Reset search window position</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Type om te zoeken</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Open Origineel Contextmenu</system:String>
     <system:String x:Key="SettingWindowHotkey">Open Instellingenvenster</system:String>
     <system:String x:Key="CopyFilePathHotkey">Kopieer Bestandspad</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Toggle Game Mode</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Toggle Silent Mode</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Toggle History</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Open Containing Folder</system:String>
     <system:String x:Key="RunAsAdminHotkey">Uitvoeren Als Administrator</system:String>

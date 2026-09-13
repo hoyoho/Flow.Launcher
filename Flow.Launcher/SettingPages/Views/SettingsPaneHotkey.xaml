@@ -170,9 +170,9 @@
                             Type="SettingWindowHotkey"
                             ValidateKeyGesture="False" />
                     </ui:SettingsCard>
-                    <ui:SettingsCard Header="{DynamicResource ToggleGameModeHotkey}">
+                    <ui:SettingsCard Header="{DynamicResource ToggleSilentModeHotkey}">
                         <ui:SettingsCard.HeaderIcon>
-                            <ui:FontIcon Glyph="&#xe7fc;" />
+                            <ui:FontIcon Glyph="&#xe7ed;" />
                         </ui:SettingsCard.HeaderIcon>
 
                         <cc:HotkeyDisplay Keys="Ctrl+F12" />

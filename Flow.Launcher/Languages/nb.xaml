@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">Fil</system:String>
     <system:String x:Key="folderTitle">Mappe</system:String>
     <system:String x:Key="textTitle">Tekst</system:String>
-    <system:String x:Key="GameMode">Spillmodus</system:String>
-    <system:String x:Key="GameModeToolTip">Stopp bruken av hurtigtaster.</system:String>
+    <system:String x:Key="SilentMode">Spillmodus</system:String>
+    <system:String x:Key="SilentModeToolTip">Stopp bruken av hurtigtaster.</system:String>
     <system:String x:Key="PositionReset">Tilbakestilling av posisjon</system:String>
     <system:String x:Key="PositionResetToolTip">Reset search window position</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Type here to search</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Åpne innebygd hurtigmeny</system:String>
     <system:String x:Key="SettingWindowHotkey">Åpne innstillingsvindu</system:String>
     <system:String x:Key="CopyFilePathHotkey">Kopier filbane</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Vis/Skjul spillmodus</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Vis/Skjul spillmodus</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Veksle historikk</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Åpne innholdsmappen</system:String>
     <system:String x:Key="RunAsAdminHotkey">Kjør som administrator</system:String>

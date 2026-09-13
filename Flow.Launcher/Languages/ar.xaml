@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">ملف</system:String>
     <system:String x:Key="folderTitle">مجلد</system:String>
     <system:String x:Key="textTitle">نص</system:String>
-    <system:String x:Key="GameMode">وضع اللعب</system:String>
-    <system:String x:Key="GameModeToolTip">تعليق استخدام مفاتيح التشغيل السريع.</system:String>
+    <system:String x:Key="SilentMode">وضع اللعب</system:String>
+    <system:String x:Key="SilentModeToolTip">تعليق استخدام مفاتيح التشغيل السريع.</system:String>
     <system:String x:Key="PositionReset">إعادة تعيين الموقع</system:String>
     <system:String x:Key="PositionResetToolTip">Reset search window position</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Type here to search</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">فتح قائمة السياق الأصلية</system:String>
     <system:String x:Key="SettingWindowHotkey">فتح نافذة الإعدادات</system:String>
     <system:String x:Key="CopyFilePathHotkey">نسخ مسار الملف</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">تبديل وضع اللعبة</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">تبديل وضع اللعبة</system:String>
     <system:String x:Key="ToggleHistoryHotkey">تبديل السجل</system:String>
     <system:String x:Key="OpenContainFolderHotkey">فتح المجلد المحتوي</system:String>
     <system:String x:Key="RunAsAdminHotkey">تشغيل كمسؤول</system:String>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Media;
@@ -305,9 +305,9 @@ namespace Flow.Launcher
                             _viewModel.QueryTextCursorMovedToEnd = false;
                         }
                         break;
-                    case nameof(MainViewModel.GameModeStatus):
-                        _notifyIcon.Icon = _viewModel.GameModeStatus
-                            ? Properties.Resources.gamemode
+                    case nameof(MainViewModel.SilentModeStatus):
+                        _notifyIcon.Icon = _viewModel.SilentModeStatus
+                            ? Properties.Resources.silentmode
                             : Properties.Resources.app;
                         break;
                 }
@@ -892,9 +892,11 @@ namespace Flow.Launcher
             var menu = _contextMenu;
             ((MenuItem)menu.Items[0]).Header = Localize.iconTrayOpen() +
                                                " (" + _settings.Hotkey + ")";
-            ((MenuItem)menu.Items[1]).Header = Localize.GameMode();
+            ((MenuItem)menu.Items[1]).Header = Localize.SilentMode() +
+                                               " (" + _settings.ToggleSilentModeHotkey + ")";
             ((MenuItem)menu.Items[2]).Header = Localize.PositionReset();
-            ((MenuItem)menu.Items[3]).Header = Localize.iconTraySettings();
+            ((MenuItem)menu.Items[3]).Header = Localize.iconTraySettings() +
+                                               " (" + _settings.SettingWindowHotkey + ")";
             ((MenuItem)menu.Items[4]).Header = Localize.iconTrayExit();
         }
 
@@ -908,11 +910,11 @@ namespace Flow.Launcher
                 Header = Localize.iconTrayOpen() + " (" + _settings.Hotkey + ")",
                 Icon = openIcon
             };
-            var gamemodeIcon = new FontIcon { Glyph = "\ue7fc" };
-            var gamemode = new MenuItem
+            var silentmodeIcon = new FontIcon { Glyph = "\ue7ed" };
+            var silentmode = new MenuItem
             {
-                Header = Localize.GameMode(),
-                Icon = gamemodeIcon
+                Header = Localize.SilentMode() + " (" + _settings.ToggleSilentModeHotkey + ")",
+                Icon = silentmodeIcon
             };
             var positionresetIcon = new FontIcon { Glyph = "\ue73f" };
             var positionreset = new MenuItem
@@ -923,7 +925,7 @@ namespace Flow.Launcher
             var settingsIcon = new FontIcon { Glyph = "\ue713" };
             var settings = new MenuItem
             {
-                Header = Localize.iconTraySettings(),
+                Header = Localize.iconTraySettings() + " (" + _settings.SettingWindowHotkey + ")",
                 Icon = settingsIcon
             };
             var exitIcon = new FontIcon { Glyph = "\ue7e8" };
@@ -934,16 +936,16 @@ namespace Flow.Launcher
             };
 
             open.Click += (o, e) => _viewModel.ToggleFlowLauncher();
-            gamemode.Click += (o, e) => _viewModel.ToggleGameMode();
+            silentmode.Click += (o, e) => _viewModel.ToggleSilentMode();
             positionreset.Click += (o, e) => _ = PositionResetAsync();
             settings.Click += (o, e) => App.API.OpenSettingDialog();
             exit.Click += (o, e) => Close();
 
-            gamemode.ToolTip = Localize.GameModeToolTip();
+            silentmode.ToolTip = Localize.SilentModeToolTip();
             positionreset.ToolTip = Localize.PositionResetToolTip();
 
             _contextMenu.Items.Add(open);
-            _contextMenu.Items.Add(gamemode);
+            _contextMenu.Items.Add(silentmode);
             _contextMenu.Items.Add(positionreset);
             _contextMenu.Items.Add(settings);
             _contextMenu.Items.Add(exit);

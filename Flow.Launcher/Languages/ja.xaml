@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">ファイル</system:String>
     <system:String x:Key="folderTitle">フォルダー</system:String>
     <system:String x:Key="textTitle">テキスト</system:String>
-    <system:String x:Key="GameMode">ゲームモード</system:String>
-    <system:String x:Key="GameModeToolTip">ホットキーの使用を一時停止します。</system:String>
+    <system:String x:Key="SilentMode">ゲームモード</system:String>
+    <system:String x:Key="SilentModeToolTip">ホットキーの使用を一時停止します。</system:String>
     <system:String x:Key="PositionReset">位置のリセット</system:String>
     <system:String x:Key="PositionResetToolTip">検索ウィンドウの位置をリセット</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">ここに入力して検索</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Windowsのコンテキストメニューを開く</system:String>
     <system:String x:Key="SettingWindowHotkey">Flow Launcherの設定ウインドウを開く</system:String>
     <system:String x:Key="CopyFilePathHotkey">ファイルのパスをコピー</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">ゲームモードの切り替え</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">ゲームモードの切り替え</system:String>
     <system:String x:Key="ToggleHistoryHotkey">履歴の表示切り替え</system:String>
     <system:String x:Key="OpenContainFolderHotkey">ファイルのあるフォルダを開く</system:String>
     <system:String x:Key="RunAsAdminHotkey">管理者として実行</system:String>

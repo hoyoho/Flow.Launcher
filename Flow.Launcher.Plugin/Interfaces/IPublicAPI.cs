@@ -401,21 +401,21 @@ namespace Flow.Launcher.Plugin
         public void OpenAppUri(string appUri);
 
         /// <summary>
-        /// Toggles Game Mode. off -> on and backwards
+        /// Toggles Silent Mode. off -> on and backwards
         /// </summary>
-        public void ToggleGameMode();
+        public void ToggleSilentMode();
 
         /// <summary>
-        /// Switches Game Mode to given value
+        /// Switches Silent Mode to given value
         /// </summary>
-        /// <param name="value">New Game Mode status</param>
-        public void SetGameMode(bool value);
+        /// <param name="value">New Silent Mode status</param>
+        public void SetSilentMode(bool value);
 
         /// <summary>
-        /// Representing Game Mode status
+        /// Representing Silent Mode status
         /// </summary>
         /// <returns></returns>
-        public bool IsGameModeOn();
+        public bool IsSilentModeOn();
 
         /// <summary>
         /// Reloads the query.

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -40,7 +40,7 @@ namespace Flow.Launcher.Plugin.Sys
             {"Open Log Location", "flowlauncher_plugin_sys_open_log_location_cmd"},
             {"Flow Launcher Tips", "flowlauncher_plugin_sys_open_docs_tips_cmd"},
             {"Flow Launcher UserData Folder", "flowlauncher_plugin_sys_open_userdata_location_cmd"},
-            {"Toggle Game Mode", "flowlauncher_plugin_sys_toggle_game_mode_cmd"},
+            {"Toggle Silent Mode", "flowlauncher_plugin_sys_toggle_silent_mode_cmd"},
             {"Set Flow Launcher Theme", "flowlauncher_plugin_sys_theme_selector_cmd"}
         };
         private readonly Dictionary<string, string> KeywordDescriptionMappings = [];
@@ -491,12 +491,12 @@ namespace Flow.Launcher.Plugin.Sys
                 },
                 new Result
                 {
-                    Title = "Toggle Game Mode",
+                    Title = "Toggle Silent Mode",
                     IcoPath = "Images\\app.png",
-                    Glyph = new GlyphInfo (FontFamily:"/Resources/#Segoe Fluent Icons", Glyph:"\ue7fc"),
+                    Glyph = new GlyphInfo (FontFamily:"/Resources/#Segoe Fluent Icons", Glyph:"\ue7ed"),
                     Action = c =>
                     {
-                        Context.API.ToggleGameMode();
+                        Context.API.ToggleSilentMode();
                         return true;
                     }
                 },

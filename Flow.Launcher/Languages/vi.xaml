@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  Startup  -->
     <system:String x:Key="runtimePluginInstalledChooseRuntimePrompt">
@@ -59,8 +59,8 @@
     <system:String x:Key="fileTitle">Ngày tháng</system:String>
     <system:String x:Key="folderTitle">Thư Mục</system:String>
     <system:String x:Key="textTitle">Văn bản</system:String>
-    <system:String x:Key="GameMode">Chế độ trò chơi</system:String>
-    <system:String x:Key="GameModeToolTip">Tạm dừng sử dụng phím nóng.</system:String>
+    <system:String x:Key="SilentMode">Chế độ trò chơi</system:String>
+    <system:String x:Key="SilentModeToolTip">Tạm dừng sử dụng phím nóng.</system:String>
     <system:String x:Key="PositionReset">Đặt lại vị trí</system:String>
     <system:String x:Key="PositionResetToolTip">Cài lại vị trí cửa sổ tìm kiếm</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Gõ vào đây để tìm kiếm</system:String>
@@ -384,7 +384,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Open Native Context Menu</system:String>
     <system:String x:Key="SettingWindowHotkey">Mở cửa sổ cài đặt</system:String>
     <system:String x:Key="CopyFilePathHotkey">Chép đường dẫn tập tin</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Chuyển đổi chế độ trò chơi</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Chuyển đổi chế độ trò chơi</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Chuyển đổi lịch sử</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Mở thư mục chứa</system:String>
     <system:String x:Key="RunAsAdminHotkey">Chạy với quyền admin</system:String>

@@ -61,8 +61,8 @@
     <system:String x:Key="fileTitle">File</system:String>
     <system:String x:Key="folderTitle">Folder</system:String>
     <system:String x:Key="textTitle">Text</system:String>
-    <system:String x:Key="GameMode">Game Mode</system:String>
-    <system:String x:Key="GameModeToolTip">Suspend the use of Hotkeys.</system:String>
+    <system:String x:Key="SilentMode">Silent Mode</system:String>
+    <system:String x:Key="SilentModeToolTip">Suspend the use of Hotkeys.</system:String>
     <system:String x:Key="PositionReset">Position Reset</system:String>
     <system:String x:Key="PositionResetToolTip">Reset search window position</system:String>
     <system:String x:Key="queryTextBoxPlaceholder">Type here to search</system:String>
@@ -388,7 +388,7 @@
     <system:String x:Key="OpenNativeContextMenuHotkey">Open Native Context Menu</system:String>
     <system:String x:Key="SettingWindowHotkey">Open Setting Window</system:String>
     <system:String x:Key="CopyFilePathHotkey">Copy File Path</system:String>
-    <system:String x:Key="ToggleGameModeHotkey">Toggle Game Mode</system:String>
+    <system:String x:Key="ToggleSilentModeHotkey">Toggle Silent Mode</system:String>
     <system:String x:Key="ToggleHistoryHotkey">Toggle History</system:String>
     <system:String x:Key="OpenContainFolderHotkey">Open Containing Folder</system:String>
     <system:String x:Key="RunAsAdminHotkey">Run As Admin</system:String>
