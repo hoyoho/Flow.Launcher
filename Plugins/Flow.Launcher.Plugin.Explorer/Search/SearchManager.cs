@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -173,7 +173,14 @@ namespace Flow.Launcher.Plugin.Explorer.Search
             results.RemoveWhere(r => Settings.IndexSearchExcludedSubdirectoryPaths.Any(
                 excludedPath => FilesFolders.PathContains(excludedPath.Path, r.SubTitle, allowEqual: true)));
 
-            return [.. results];
+            // Ensure file/folder name matches (TitleHighlightData non-empty) rank above
+            // path-only matches. The Everything two-pass search already yields name
+            // matches first; this reorder is a stable safeguard that also covers the
+            // single-pass (FullPath off) case where all results are name matches.
+            var sorted = results
+                .OrderByDescending(r => r.TitleHighlightData is { Count: > 0 })
+                .ToList();
+            return sorted;
         }
 
         private List<Result> EverythingContentSearchResult(Query query)

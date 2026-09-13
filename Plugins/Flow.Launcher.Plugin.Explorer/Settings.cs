@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -153,7 +153,7 @@ namespace Flow.Launcher.Plugin.Explorer
 
         public string EverythingInstalledPath { get; set; }
 
-        public EverythingSortOption SortOption { get; set; } = EverythingSortOption.NAME_ASCENDING;
+        public EverythingSortOption SortOption { get; set; } = EverythingSortOption.EVERYTHING_SORT_RELEVANCE;
 
         public bool EnableEverythingContentSearch { get; set; } = false;
 

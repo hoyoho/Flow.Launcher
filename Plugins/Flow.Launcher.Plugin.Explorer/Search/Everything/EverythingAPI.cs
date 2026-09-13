@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -25,6 +25,10 @@ namespace Flow.Launcher.Plugin.Explorer.Search.Everything
         /// </summary>
         public bool IsFastSortOption(EverythingSortOption sortOption)
         {
+            // Relevance (no explicit sort) is always the fastest path.
+            if (sortOption == EverythingSortOption.EVERYTHING_SORT_RELEVANCE)
+                return true;
+
             var fastSortOptionEnabled = EverythingApiDllImport.Everything_IsFastSort(sortOption);
             // If the Everything service is not running, then this call will incorrectly report
             // the state as false. This checks for errors thrown by the api and up to the caller to handle.

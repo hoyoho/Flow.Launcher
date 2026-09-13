@@ -161,6 +161,7 @@
     <system:String x:Key="flowlauncher_plugin_everything_15_sort_warning">Warning: Everything 1.5 is unavailable. The service may not be running, or the instance name may be invalid</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_query_error">Error while querying Everything</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by">Sort By</system:String>
+    <system:String x:Key="flowlauncher_plugin_everything_sort_by_relevance">Relevance (Everything default)</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_name_ascending">Name &#x2191;</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_name_descending">Name &#x2193;</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_path_ascending">Path &#x2191;</system:String>

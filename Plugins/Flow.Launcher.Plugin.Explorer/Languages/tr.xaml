@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!--  Dialogues  -->
@@ -152,6 +152,7 @@
     <system:String x:Key="flowlauncher_plugin_everything_is_not_running">Everything Servisi çalışmıyor</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_query_error">Sorgu Everything üzerinde çalıştırılırken hata oluştu</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by">Şuna Göre Sırala</system:String>
+    <system:String x:Key="flowlauncher_plugin_everything_sort_by_relevance">İlgi (Everything varsayılan)</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_name_ascending">İsim ↑</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_name_descending">İsim ↓</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_path_ascending">Yol ↑</system:String>

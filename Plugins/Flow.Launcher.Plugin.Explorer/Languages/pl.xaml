@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!--  Dialogues  -->
@@ -152,6 +152,7 @@
     <system:String x:Key="flowlauncher_plugin_everything_is_not_running">Everything Service nie jest uruchomiony</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_query_error">Wystąpił błąd podczas pobierania wyników z Everything</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by">Sortuj wg</system:String>
+    <system:String x:Key="flowlauncher_plugin_everything_sort_by_relevance">Trafność (domyślnie Everything)</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_name_ascending">Nazwa ↑</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_name_descending">Nazwa ↓</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_path_ascending">Ścieżka ↑</system:String>

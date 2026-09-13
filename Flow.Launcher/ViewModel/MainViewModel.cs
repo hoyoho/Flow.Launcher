@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
+using Flow.Launcher.Core.Grep;
 using Flow.Launcher.Core.Plugin;
 using Flow.Launcher.Helper;
 using Flow.Launcher.Infrastructure;
@@ -57,6 +58,9 @@ namespace Flow.Launcher.ViewModel
 
         private ChannelWriter<ResultsForUpdate> _resultsUpdateChannelWriter;
         private Task _resultsViewUpdateTask;
+
+        // Grep pipeline for the current query (extracted from "| grep ..." in QueryText).
+        private List<GrepCommand> _currentGrepCommands;
 
         private readonly IReadOnlyList<Result> _emptyResult = new List<Result>();
         private readonly IReadOnlyList<DialogJumpResult> _emptyDialogJumpResult = new List<DialogJumpResult>();
@@ -1540,7 +1544,20 @@ namespace Flow.Launcher.ViewModel
 
             App.API.LogDebug(ClassName, $"Start query with text: <{QueryText}>");
 
-            var query = await ConstructQueryAsync(QueryText, Settings.CustomShortcuts, Settings.BuiltinShortcuts);
+            // Extract "| grep ..." pipeline (if any) before sending the query to plugins.
+            string effectiveQueryText = QueryText;
+            if (GrepCommand.TryExtractPipeGrepChain(QueryText, out var searchQuery, out var grepCommands))
+            {
+                effectiveQueryText = searchQuery;
+                _currentGrepCommands = grepCommands;
+                App.API.LogDebug(ClassName, $"Grep pipeline detected ({grepCommands.Count} stage(s)), searching for <{searchQuery}>");
+            }
+            else
+            {
+                _currentGrepCommands = null;
+            }
+
+            var query = await ConstructQueryAsync(effectiveQueryText, Settings.CustomShortcuts, Settings.BuiltinShortcuts);
 
             if (query == null) // shortcut expanded
             {
@@ -2530,10 +2547,170 @@ namespace Flow.Launcher.ViewModel
                 }
             }
 
+            // Apply global grep pipeline (| grep ...) if present.
+            var grepCommands = _currentGrepCommands;
+            if (grepCommands != null && grepCommands.Count > 0)
+            {
+                resultsForUpdates = ApplyGrepPipeline(resultsForUpdates, grepCommands);
+            }
+
+            if (resultsForUpdates.Count == 0)
+            {
+                Results.Clear();
+                return;
+            }
+
             // it should be the same for all results
             bool reSelect = resultsForUpdates.First().ReSelectFirstResult;
 
             Results.AddResults(resultsForUpdates, token, reSelect);
+        }
+
+        /// <summary>
+        /// Applies a sequence of grep commands to the plugin results, treating
+        /// each result's Title (+ SubTitle) as a line of text.
+        /// </summary>
+        private ICollection<ResultsForUpdate> ApplyGrepPipeline(
+            ICollection<ResultsForUpdate> resultsForUpdates, List<GrepCommand> grepCommands)
+        {
+            // Flatten results into an ordered list, keeping track of their source metadata.
+            var flat = new List<(Result Result, PluginMetadata Metadata, ResultsForUpdate Source)>();
+            foreach (var u in resultsForUpdates)
+            {
+                foreach (var r in u.Results)
+                    flat.Add((r, u.Metadata, u));
+            }
+
+            if (flat.Count == 0)
+                return resultsForUpdates;
+
+            // Determine which results match the full pipeline.
+            var matchFlags = new bool[flat.Count];
+            for (int i = 0; i < flat.Count; i++)
+                matchFlags[i] = true;
+
+            int maxCount = 0;
+            bool countOnly = false;
+            bool onlyMatching = false;
+            int beforeCtx = 0, afterCtx = 0;
+
+            foreach (var cmd in grepCommands)
+            {
+                var opts = cmd.Matcher.Options;
+                if (opts.MaxCount > 0) maxCount = opts.MaxCount;
+                if (opts.CountOnly) countOnly = true;
+                if (opts.OnlyMatching) onlyMatching = true;
+                beforeCtx = Math.Max(beforeCtx, opts.BeforeContext);
+                afterCtx = Math.Max(afterCtx, opts.AfterContext);
+
+                int matched = 0;
+                for (int i = 0; i < flat.Count; i++)
+                {
+                    if (!matchFlags[i]) continue;
+
+                    string text = GetResultGrepText(flat[i].Result);
+                    bool isMatch = cmd.Matcher.IsMatch(text);
+
+                    if (isMatch)
+                    {
+                        matched++;
+                        if (maxCount > 0 && matched > maxCount)
+                            matchFlags[i] = false;
+                    }
+                    else
+                    {
+                        matchFlags[i] = false;
+                    }
+                }
+            }
+
+            // Expand context (-A/-B/-C): mark neighbors of matches.
+            if (beforeCtx > 0 || afterCtx > 0)
+            {
+                var expanded = (bool[])matchFlags.Clone();
+                for (int i = 0; i < flat.Count; i++)
+                {
+                    if (matchFlags[i])
+                    {
+                        int start = Math.Max(0, i - beforeCtx);
+                        int end = Math.Min(flat.Count - 1, i + afterCtx);
+                        for (int j = start; j <= end; j++)
+                            expanded[j] = true;
+                    }
+                }
+                matchFlags = expanded;
+            }
+
+            // Rebuild results, grouped by plugin metadata.
+            var byPlugin = new Dictionary<string, (PluginMetadata Metadata, List<Result> Results, ResultsForUpdate Source)>();
+            for (int i = 0; i < flat.Count; i++)
+            {
+                if (!matchFlags[i]) continue;
+
+                var (result, metadata, source) = flat[i];
+
+                if (onlyMatching)
+                {
+                    // Replace the title/subtitle with the matched portion.
+                    var text = GetResultGrepText(result);
+                    foreach (var cmd in grepCommands)
+                    {
+                        var matches = cmd.Matcher.Matches(text);
+                        if (matches.Count > 0)
+                        {
+                            var matched = new System.Text.StringBuilder();
+                            foreach (var m in matches)
+                                matched.Append(text, m.Offset, m.Length).Append(' ');
+                            result.Title = matched.ToString().TrimEnd();
+                            result.SubTitle = string.Empty;
+                            break;
+                        }
+                    }
+                }
+
+                if (!byPlugin.TryGetValue(metadata.ID, out var entry))
+                {
+                    entry = (metadata, new List<Result>(), source);
+                    byPlugin[metadata.ID] = entry;
+                }
+                entry.Results.Add(result);
+            }
+
+            if (countOnly)
+            {
+                // Replace all results with a single count summary.
+                int count = byPlugin.Values.Sum(e => e.Results.Count);
+                var summary = new Result
+                {
+                    Title = $"{count} match{(count == 1 ? "" : "es")}",
+                    SubTitle = "grep count",
+                    Score = Result.MaxScore
+                };
+                var firstSource = flat[0].Source;
+                return new List<ResultsForUpdate>
+                {
+                    new ResultsForUpdate(new List<Result> { summary }, firstSource.Metadata, firstSource.Query, firstSource.Token, true, true)
+                };
+            }
+
+            var resultList = new List<ResultsForUpdate>();
+            foreach (var entry in byPlugin.Values)
+            {
+                resultList.Add(new ResultsForUpdate(entry.Results, entry.Metadata, entry.Source.Query, entry.Source.Token, entry.Source.ReSelectFirstResult, entry.Source.ShouldClearExistingResults));
+            }
+
+            return resultList;
+        }
+
+        /// <summary>
+        /// Returns the text used for grep matching on a result.
+        /// Matches against both Title and SubTitle.
+        /// </summary>
+        private static string GetResultGrepText(Result result)
+        {
+            var title = result.Title ?? string.Empty;
+            var subTitle = result.SubTitle ?? string.Empty;
+            return title + " " + subTitle;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]

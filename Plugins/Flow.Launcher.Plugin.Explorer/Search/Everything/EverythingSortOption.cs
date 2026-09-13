@@ -1,10 +1,12 @@
-﻿using Flow.Launcher.Localization.Attributes;
+using Flow.Launcher.Localization.Attributes;
 
 namespace Flow.Launcher.Plugin.Explorer.Search.Everything
 {
     [EnumLocalize]
     public enum EverythingSortOption : uint
     {
+        [EnumLocalizeKey(nameof(Localize.flowlauncher_plugin_everything_sort_by_relevance))]
+        EVERYTHING_SORT_RELEVANCE = 0u,
         [EnumLocalizeKey(nameof(Localize.flowlauncher_plugin_everything_sort_by_name_ascending))]
         NAME_ASCENDING = 1u,
         [EnumLocalizeKey(nameof(Localize.flowlauncher_plugin_everything_sort_by_name_descending))]

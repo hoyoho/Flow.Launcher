@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!--  Dialogues  -->
@@ -152,6 +152,7 @@
     <system:String x:Key="flowlauncher_plugin_everything_is_not_running">Попередження: Служба Everything не запущена</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_query_error">Помилка при виконанні запиту Everything</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by">Сортувати за</system:String>
+    <system:String x:Key="flowlauncher_plugin_everything_sort_by_relevance">Релевантність (Everything за замовчуванням)</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_name_ascending">Назва ↑</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_name_descending">Назва ↓</system:String>
     <system:String x:Key="flowlauncher_plugin_everything_sort_by_path_ascending">Шлях ↑</system:String>

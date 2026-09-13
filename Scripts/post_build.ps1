@@ -135,11 +135,26 @@ function Main {
 
         Delete-Unused $p $config
 
+        # Remove leftover framework-dependent publish output (from manual
+        # `dotnet publish --self-contained false`) so it isn't packed alongside
+        # the self-contained output and bloat the installer.
+        $leftoverPublish = "$p\Output\Release\win-x64"
+        if (Test-Path $leftoverPublish) {
+            Write-Host "Removing leftover publish dir: $leftoverPublish"
+            Remove-Item -Recurse -Force $leftoverPublish
+        }
+
         Publish-Self-Contained $p
 
         Remove-CreateDumpExe $p $config
 
         $o = "$p\Output\Packages"
+        # Clean previous packages to avoid Velopack version conflict
+        # ("release equal or greater to current version already exists").
+        if (Test-Path $o) {
+            Write-Host "Cleaning previous packages in $o"
+            Remove-Item -Recurse -Force $o
+        }
         Validate-Directory $o
         Pack-Velopack-Installer $p $v $o $channel
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -27,6 +27,55 @@ namespace Flow.Launcher.Plugin.Explorer.Search.Everything
 
             if (token.IsCancellationRequested)
                 yield break;
+
+            // When full-path search is enabled, a bare keyword matches against the
+            // entire path which can produce thousands of results and push the
+            // exact file/folder name match out of the MaxResult window.
+            // Run a name-only pass first so name matches are yielded first and
+            // always fit within MaxResult; then append path-only matches.
+            if (Settings.EverythingSearchFullPath)
+            {
+                var nameOption = new EverythingSearchOption(search,
+                    Settings.SortOption,
+                    MaxCount: Settings.MaxResult,
+                    IsFullPathSearch: false,
+                    IsRunCounterEnabled: Settings.EverythingEnableRunCount);
+
+                var nameResults = new List<SearchResult>();
+                var seenPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                await foreach (var result in api.SearchAsync(nameOption, token))
+                {
+                    nameResults.Add(result);
+                    seenPaths.Add(result.FullPath);
+                    yield return result;
+                }
+
+                if (token.IsCancellationRequested)
+                    yield break;
+
+                var remaining = Settings.MaxResult - nameResults.Count;
+                if (remaining > 0)
+                {
+                    var pathOption = new EverythingSearchOption(search,
+                        Settings.SortOption,
+                        MaxCount: Settings.MaxResult,
+                        IsFullPathSearch: true,
+                        IsRunCounterEnabled: Settings.EverythingEnableRunCount);
+
+                    int yielded = 0;
+                    await foreach (var result in api.SearchAsync(pathOption, token))
+                    {
+                        if (seenPaths.Contains(result.FullPath))
+                            continue;
+                        yield return result;
+                        if (++yielded >= remaining)
+                            break;
+                    }
+                }
+
+                yield break;
+            }
 
             var option = new EverythingSearchOption(search,
                 Settings.SortOption,

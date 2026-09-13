@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -151,6 +151,10 @@ namespace Flow.Launcher.Plugin.Explorer.Search.Everything
 
             try
             {
+                // Relevance (no explicit sort) is always the fastest path.
+                if (sortOption == EverythingSortOption.EVERYTHING_SORT_RELEVANCE)
+                    return true;
+
                 if (TryConvertSortOption(sortOption, out var propertyId, out _))
                 {
                     var isFastSort = Everything3ApiDllImport.Everything3_IsPropertyFastSort(client, propertyId);
