@@ -188,8 +188,8 @@
     <system:String x:Key="homeToggleBoxToolTip">This can only be edited if plugin supports Home feature and Home Page is enabled.</system:String>
     <system:String x:Key="showAtTopmost">Show Search Window at Foremost</system:String>
     <system:String x:Key="showAtTopmostToolTip">Overrides other programs' 'Always on Top' setting and displays Flow in the foremost position.</system:String>
-    <system:String x:Key="autoRestartAfterChanging">在插件商店改動插件後重新啟動</system:String>
-    <system:String x:Key="autoRestartAfterChangingToolTip">在插件商店安裝/移除/更新插件後自動重新啟動Flow Launcher</system:String>
+    <system:String x:Key="autoRestartAfterChanging">在商店改動插件後重新啟動</system:String>
+    <system:String x:Key="autoRestartAfterChangingToolTip">在商店安裝/移除/更新插件後自動重新啟動Flow Launcher</system:String>
     <system:String x:Key="showUnknownSourceWarning">Show unknown source warning</system:String>
     <system:String x:Key="showUnknownSourceWarningToolTip">Show warning when installing plugins from unknown sources</system:String>
     <system:String x:Key="autoUpdatePlugins">Auto update plugins</system:String>
@@ -246,7 +246,7 @@
     <system:String x:Key="pluginJsonInvalidOrCorrupted">Failed to install plugin because plugin.json is invalid or corrupted</system:String>
 
     <!--  Setting Plugin Store  -->
-    <system:String x:Key="pluginStore">插件商店</system:String>
+    <system:String x:Key="pluginStore">商店</system:String>
     <system:String x:Key="pluginStore_NewRelease">New Release</system:String>
     <system:String x:Key="pluginStore_RecentlyUpdated">Recently Updated</system:String>
     <system:String x:Key="pluginStore_None">插件</system:String>

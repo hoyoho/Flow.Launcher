@@ -187,8 +187,8 @@
     <system:String x:Key="homeToggleBoxToolTip">这只能在插件支持主页功能和主页启用时进行编辑。</system:String>
     <system:String x:Key="showAtTopmost">将搜索窗口置于顶层</system:String>
     <system:String x:Key="showAtTopmostToolTip">覆盖其他“总是在顶部”的程序窗口并在最顶层的位置显示 Flow Launcher 搜索窗口。</system:String>
-    <system:String x:Key="autoRestartAfterChanging">通过插件商店修改插件后重启</system:String>
-    <system:String x:Key="autoRestartAfterChangingToolTip">通过插件商店安装/卸载/更新插件后自动重启 Flow Launcher</system:String>
+    <system:String x:Key="autoRestartAfterChanging">通过商店修改插件后重启</system:String>
+    <system:String x:Key="autoRestartAfterChangingToolTip">通过商店安装/卸载/更新插件后自动重启 Flow Launcher</system:String>
     <system:String x:Key="showUnknownSourceWarning">显示未知来源警告</system:String>
     <system:String x:Key="showUnknownSourceWarningToolTip">安装来自未知来源的插件时显示警告</system:String>
     <system:String x:Key="autoUpdatePlugins">自动更新插件</system:String>
@@ -245,7 +245,7 @@
     <system:String x:Key="pluginJsonInvalidOrCorrupted">安装插件失败，因为 plugin.json 无效或已损坏</system:String>
 
     <!--  Setting Plugin Store  -->
-    <system:String x:Key="pluginStore">插件商店</system:String>
+    <system:String x:Key="pluginStore">商店</system:String>
     <system:String x:Key="pluginStore_NewRelease">最新发布</system:String>
     <system:String x:Key="pluginStore_RecentlyUpdated">最近更新</system:String>
     <system:String x:Key="pluginStore_None">插件</system:String>
@@ -278,7 +278,7 @@
     <system:String x:Key="UpdatePromptTitle">插件更新</system:String>
     <system:String x:Key="UpdatePromptSubtitle">{0} 作者： {1} {2}{2}您想要更新这个插件吗？</system:String>
     <system:String x:Key="DownloadingPlugin">下载插件</system:String>
-    <system:String x:Key="AutoRestartAfterChange">插件商店安装/卸载/更新插件后自动重启</system:String>
+    <system:String x:Key="AutoRestartAfterChange">商店安装/卸载/更新插件后自动重启</system:String>
     <system:String x:Key="ZipFileNotHavePluginJson">Zip 文件没有有效的 plugin.json 配置</system:String>
     <system:String x:Key="InstallFromUnknownSourceTitle">从未知源安装</system:String>
     <system:String x:Key="InstallFromUnknownSourceSubtitle">您正在从未知源安装此插件，它可能包含潜在风险！{0}{0}请确保您了解来源以及安全性。{0}{0}您想要继续吗？{0}{0}(您可以通过设置关闭此警告)</system:String>
