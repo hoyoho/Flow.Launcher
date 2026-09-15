@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using Flow.Launcher.Plugin;
 
@@ -59,9 +60,9 @@ namespace Flow.Launcher.Plugin.ClipboardSnippets
                 IcoPath = IconPath,
                 Score = score,
                 TitleHighlightData = highlightData,
-                Action = _ =>
+                AsyncAction = async _ =>
                 {
-                    CopyToClipboard(capturedSnippet);
+                    await Task.Run(() => CopyToClipboard(capturedSnippet)).ConfigureAwait(false);
                     return true;
                 }
             };

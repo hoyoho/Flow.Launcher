@@ -4,6 +4,7 @@
     <OutputType>Library</OutputType>
     <ProjectGuid>{13F82D4E-F285-47C8-B498-4684C0A36AB5}</ProjectGuid>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>Flow.Launcher.Plugin.ClipboardSnippets</RootNamespace>
     <AssemblyName>Flow.Launcher.Plugin.ClipboardSnippets</AssemblyName>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

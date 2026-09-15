@@ -136,10 +136,27 @@ namespace Flow.Launcher.Plugin.Sys
             Context = context;
             _settings = context.API.LoadSettingJsonStorage<Settings>();
             _viewModel = new SettingsViewModel(_settings);
+            MigrateRenamedCommands();
             foreach (string key in KeywordTitleMappings.Keys)
             {
                 // Remove _cmd in the last of the strings
                 KeywordDescriptionMappings[key] = KeywordTitleMappings[key][..^4];
+            }
+        }
+
+        private void MigrateRenamedCommands()
+        {
+            const string oldKey = "Toggle Game Mode";
+            const string newKey = "Toggle Silent Mode";
+
+            // "Toggle Game Mode" was renamed to "Toggle Silent Mode". Settings saved before the
+            // rename still contain the old key, which has no title/description mapping anymore.
+            // Migrate it so the localized title & description lookups don't fail.
+            foreach (var command in _settings.Commands.Where(c => c.Key == oldKey))
+            {
+                command.Key = newKey;
+                if (command.Keyword == oldKey)
+                    command.Keyword = newKey;
             }
         }
 
