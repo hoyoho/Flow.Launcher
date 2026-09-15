@@ -30,7 +30,6 @@
 
     <!--  Http  -->
     <system:String x:Key="pleaseTryAgain">请重试</system:String>
-    <system:String x:Key="parseProxyFailed">无法解析 Http 代理</system:String>
 
     <!--  AbstractPluginEnvironment  -->
     <system:String x:Key="failToInstallTypeScriptEnv">无法安装 TypeScript 环境。请稍后再试</system:String>
@@ -444,20 +443,22 @@
     <system:String x:Key="DialogJumpFileResultBehaviourDirectory">在路径框中填写目录</system:String>
 
     <!--  Setting Proxy  -->
-    <system:String x:Key="proxy">HTTP 代理</system:String>
-    <system:String x:Key="enableProxy">启用 HTTP 代理</system:String>
-    <system:String x:Key="server">HTTP 服务器</system:String>
-    <system:String x:Key="port">端口</system:String>
+    <system:String x:Key="proxy">代理</system:String>
+    <system:String x:Key="proxyMode">代理模式</system:String>
+    <system:String x:Key="ProxyModeSystem">跟随系统</system:String>
+    <system:String x:Key="ProxyModeDirect">直接连接</system:String>
+    <system:String x:Key="ProxyModeManual">手动代理</system:String>
+    <system:String x:Key="proxyAddress">代理地址</system:String>
+    <system:String x:Key="proxyAddressToolTip">例如 http://127.0.0.1:8080 或 socks5://127.0.0.1:1080，端口必需</system:String>
+    <system:String x:Key="proxyAddressInvalid">代理地址无效或不完整，需包含主机与端口</system:String>
     <system:String x:Key="userName">用户名</system:String>
     <system:String x:Key="password">密码</system:String>
     <system:String x:Key="testProxy">测试代理</system:String>
     <system:String x:Key="save">保存</system:String>
-    <system:String x:Key="serverCantBeEmpty">服务器不能为空</system:String>
-    <system:String x:Key="portCantBeEmpty">端口不能为空</system:String>
-    <system:String x:Key="invalidPortFormat">非法的端口格式</system:String>
-    <system:String x:Key="saveProxySuccessfully">保存代理设置成功</system:String>
     <system:String x:Key="proxyIsCorrect">代理设置正确</system:String>
     <system:String x:Key="proxyConnectFailed">代理连接失败</system:String>
+    <system:String x:Key="proxyAuthFailed">代理认证失败，请检查用户名/密码</system:String>
+    <system:String x:Key="proxyAuthRequired">代理需要用户名/密码</system:String>
 
     <!--  Setting About  -->
     <system:String x:Key="about">关于</system:String>

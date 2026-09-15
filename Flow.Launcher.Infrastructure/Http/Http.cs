@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -16,6 +16,10 @@ namespace Flow.Launcher.Infrastructure.Http
 
         private const string UserAgent = @"Mozilla/5.0 (Trident/7.0; rv:11.0) like Gecko";
 
+        // Original platform proxy (follows the OS proxy settings on Windows),
+        // captured before any override so ProxyMode.System can restore it.
+        private static readonly IWebProxy systemDefaultProxy = HttpClient.DefaultProxy;
+
         private static readonly HttpClient client = new();
 
         static Http()
@@ -26,7 +30,6 @@ namespace Flow.Launcher.Infrastructure.Http
                 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             client.DefaultRequestHeaders.Add("User-Agent", UserAgent);
-            HttpClient.DefaultProxy = WebProxy;
         }
 
         private static HttpProxy proxy;
@@ -36,49 +39,57 @@ namespace Flow.Launcher.Infrastructure.Http
             private get => proxy;
             set
             {
+                if (proxy != null)
+                    proxy.Changed -= ApplyProxy;
+
                 proxy = value;
-                proxy.PropertyChanged += UpdateProxy;
-                UpdateProxy(ProxyProperty.Enabled);
+                proxy.Changed += ApplyProxy;
+                ApplyProxy();
             }
         }
 
-        public static WebProxy WebProxy { get; } = new WebProxy();
-
         /// <summary>
-        /// Update the Address of the Proxy to modify the client Proxy
+        /// The proxy currently assigned to HttpClient.DefaultProxy.
+        /// The platform default instance means requests follow the OS proxy settings.
         /// </summary>
-        public static void UpdateProxy(ProxyProperty property)
-        {
-            if (string.IsNullOrEmpty(Proxy.Server))
-                return;
+        public static IWebProxy CurrentProxy { get; private set; }
 
-            try
+        private static void ApplyProxy()
+        {
+            switch (Proxy.Mode)
             {
-                (WebProxy.Address, WebProxy.Credentials) = property switch
-                {
-                    ProxyProperty.Enabled => Proxy.Enabled switch
-                    {
-                        true when !string.IsNullOrEmpty(Proxy.Server) => Proxy.UserName switch
-                        {
-                            var userName when string.IsNullOrEmpty(userName) =>
-                                (new Uri($"http://{Proxy.Server}:{Proxy.Port}"), null),
-                            _ => (new Uri($"http://{Proxy.Server}:{Proxy.Port}"),
-                                new NetworkCredential(Proxy.UserName, Proxy.Password))
-                        },
-                        _ => (null, null)
-                    },
-                    ProxyProperty.Server => (new Uri($"http://{Proxy.Server}:{Proxy.Port}"), WebProxy.Credentials),
-                    ProxyProperty.Port => (new Uri($"http://{Proxy.Server}:{Proxy.Port}"), WebProxy.Credentials),
-                    ProxyProperty.UserName => (WebProxy.Address, new NetworkCredential(Proxy.UserName, Proxy.Password)),
-                    ProxyProperty.Password => (WebProxy.Address, new NetworkCredential(Proxy.UserName, Proxy.Password)),
-                    _ => throw new ArgumentOutOfRangeException(null)
-                };
+                case ProxyMode.Direct:
+                    HttpClient.DefaultProxy = CurrentProxy = new WebProxy();
+                    break;
+
+                case ProxyMode.Manual:
+                    ApplyManualProxy();
+                    break;
+
+                default: // ProxyMode.System
+                    HttpClient.DefaultProxy = CurrentProxy = systemDefaultProxy;
+                    break;
             }
-            catch (UriFormatException e)
+        }
+
+        private static void ApplyManualProxy()
+        {
+            var endpoint = ProxyResolver.Resolve(Proxy.Address);
+            if (endpoint == null)
             {
-                PublicApi.Instance.ShowMsgError(Localize.pleaseTryAgain(), Localize.parseProxyFailed());
-                Log.Exception(ClassName, "Unable to parse Uri", e);
+                // An incomplete manual config must not silently keep any previous
+                // proxy or force a direct connection — fall back to the system proxy.
+                Log.Warn(ClassName, $"Proxy address <{Proxy.Address}> is invalid or incomplete, falling back to the system proxy");
+                HttpClient.DefaultProxy = CurrentProxy = systemDefaultProxy;
+                return;
             }
+
+            var webProxy = new WebProxy(new Uri($"{endpoint.Scheme}://{endpoint.Host}:{endpoint.Port}"), true);
+            if (!string.IsNullOrEmpty(Proxy.UserName))
+                webProxy.Credentials = new NetworkCredential(Proxy.UserName, Proxy.Password);
+
+            HttpClient.DefaultProxy = CurrentProxy = webProxy;
+            Log.Debug(ClassName, $"Proxy <{endpoint.Scheme}://{endpoint.Host}:{endpoint.Port}> applied");
         }
 
         public static async Task DownloadAsync([NotNull] string url, [NotNull] string filePath, Action<double> reportProgress = null, CancellationToken token = default)
@@ -151,7 +162,7 @@ namespace Flow.Launcher.Infrastructure.Http
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="url"></param>
         /// <param name="token"></param>

@@ -1,8 +1,11 @@
-﻿using System.Net;
+using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
-using Flow.Launcher.Core;
+using Flow.Launcher.Core.ExternalPlugins;
+using Flow.Launcher.Infrastructure.Http;
 using Flow.Launcher.Infrastructure.UserSettings;
 using Flow.Launcher.Plugin;
 
@@ -12,13 +15,29 @@ public partial class SettingsPaneProxyViewModel : BaseModel
 {
     public Settings Settings { get; }
 
-    private readonly Updater _updater;
+    private static readonly TimeSpan ProxyTestTimeout = TimeSpan.FromSeconds(10);
 
-    public SettingsPaneProxyViewModel(Settings settings, Updater updater)
+    public SettingsPaneProxyViewModel(Settings settings)
     {
         Settings = settings;
-        _updater = updater;
     }
+
+    public class ProxyModeData : DropdownDataGeneric<ProxyMode> { }
+
+    public List<ProxyModeData> ProxyModes { get; } = DropdownDataGeneric<ProxyMode>.GetValues<ProxyModeData>("ProxyMode");
+
+    public ProxyMode ProxyMode
+    {
+        get => Settings.Proxy.Mode;
+        set
+        {
+            Settings.Proxy.Mode = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(IsManual));
+        }
+    }
+
+    public bool IsManual => Settings.Proxy.Mode == ProxyMode.Manual;
 
     [RelayCommand]
     private async Task OnTestProxyClickedAsync()
@@ -29,28 +48,64 @@ public partial class SettingsPaneProxyViewModel : BaseModel
 
     private async Task<string> TestProxyAsync()
     {
-        if (string.IsNullOrEmpty(Settings.Proxy.Server)) return "serverCantBeEmpty";
-        if (Settings.Proxy.Port <= 0) return "portCantBeEmpty";
+        WebProxy manualProxy = null;
 
-        var handler = new HttpClientHandler
+        if (Settings.Proxy.Mode == ProxyMode.Manual)
         {
-            Proxy = new WebProxy(Settings.Proxy.Server, Settings.Proxy.Port)
-        };
+            var endpoint = ProxyResolver.Resolve(Settings.Proxy.Address);
+            if (endpoint == null)
+                return "proxyAddressInvalid";
 
-        if (!string.IsNullOrEmpty(Settings.Proxy.UserName) && !string.IsNullOrEmpty(Settings.Proxy.Password))
-        {
-            handler.Proxy.Credentials = new NetworkCredential(Settings.Proxy.UserName, Settings.Proxy.Password);
+            manualProxy = new WebProxy(new Uri($"{endpoint.Scheme}://{endpoint.Host}:{endpoint.Port}"), true);
+            var hasCredentials = !string.IsNullOrEmpty(Settings.Proxy.UserName)
+                                 && !string.IsNullOrEmpty(Settings.Proxy.Password);
+            if (hasCredentials)
+                manualProxy.Credentials = new NetworkCredential(Settings.Proxy.UserName, Settings.Proxy.Password);
         }
 
-        using var client = new HttpClient(handler);
         try
         {
-            var response = await client.GetAsync(_updater.GitHubRepository);
-            return response.IsSuccessStatusCode ? "proxyIsCorrect" : "proxyConnectFailed";
+            var status = await SendProbeAsync(manualProxy);
+
+            if (status == HttpStatusCode.OK)
+                return "proxyIsCorrect";
+
+            if (status == HttpStatusCode.ProxyAuthenticationRequired)
+                return string.IsNullOrEmpty(Settings.Proxy.UserName) ? "proxyAuthRequired" : "proxyAuthFailed";
+
+            return "proxyConnectFailed";
         }
         catch
         {
             return "proxyConnectFailed";
+        }
+    }
+
+    /// <summary>
+    /// Probes the plugin manifest the way a real request would:
+    /// System mode goes through the current default proxy (the OS proxy settings),
+    /// Direct mode connects directly, Manual mode goes through the parsed proxy.
+    /// </summary>
+    private async Task<HttpStatusCode> SendProbeAsync(WebProxy proxy)
+    {
+        var handler = new HttpClientHandler
+        {
+            // System mode (Proxy = null, UseProxy = true) goes through the
+            // current default proxy, i.e. the OS proxy settings.
+            UseProxy = Settings.Proxy.Mode != ProxyMode.Direct,
+            Proxy = proxy,
+            UseDefaultCredentials = false
+        };
+
+        using var client = new HttpClient(handler) { Timeout = ProxyTestTimeout };
+        try
+        {
+            using var response = await client.GetAsync(PluginsManifest.PrimaryManifestUrl);
+            return response.StatusCode;
+        }
+        catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.ProxyAuthenticationRequired)
+        {
+            return HttpStatusCode.ProxyAuthenticationRequired;
         }
     }
 }

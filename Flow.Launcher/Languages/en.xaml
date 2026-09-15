@@ -32,7 +32,6 @@
 
     <!--  Http  -->
     <system:String x:Key="pleaseTryAgain">Please try again</system:String>
-    <system:String x:Key="parseProxyFailed">Unable to parse Http Proxy</system:String>
 
     <!--  AbstractPluginEnvironment  -->
     <system:String x:Key="failToInstallTypeScriptEnv">Failed to install TypeScript environment. Please try again later</system:String>
@@ -448,20 +447,22 @@
     <system:String x:Key="DialogJumpFileResultBehaviourDirectory">Fill directory in path box</system:String>
 
     <!--  Setting Proxy  -->
-    <system:String x:Key="proxy">HTTP Proxy</system:String>
-    <system:String x:Key="enableProxy">Enable HTTP Proxy</system:String>
-    <system:String x:Key="server">HTTP Server</system:String>
-    <system:String x:Key="port">Port</system:String>
+    <system:String x:Key="proxy">Proxy</system:String>
+    <system:String x:Key="proxyMode">Proxy Mode</system:String>
+    <system:String x:Key="ProxyModeSystem">System Proxy</system:String>
+    <system:String x:Key="ProxyModeDirect">Direct Connection</system:String>
+    <system:String x:Key="ProxyModeManual">Manual Proxy</system:String>
+    <system:String x:Key="proxyAddress">Proxy Address</system:String>
+    <system:String x:Key="proxyAddressToolTip">e.g. http://127.0.0.1:8080 or socks5://127.0.0.1:1080; port is required</system:String>
+    <system:String x:Key="proxyAddressInvalid">Proxy address is invalid or incomplete, it must include host and port</system:String>
     <system:String x:Key="userName">User Name</system:String>
     <system:String x:Key="password">Password</system:String>
     <system:String x:Key="testProxy">Test Proxy</system:String>
     <system:String x:Key="save">Save</system:String>
-    <system:String x:Key="serverCantBeEmpty">Server field can't be empty</system:String>
-    <system:String x:Key="portCantBeEmpty">Port field can't be empty</system:String>
-    <system:String x:Key="invalidPortFormat">Invalid port format</system:String>
-    <system:String x:Key="saveProxySuccessfully">Proxy configuration saved successfully</system:String>
     <system:String x:Key="proxyIsCorrect">Proxy configured correctly</system:String>
     <system:String x:Key="proxyConnectFailed">Proxy connection failed</system:String>
+    <system:String x:Key="proxyAuthFailed">Proxy authentication failed, check username/password</system:String>
+    <system:String x:Key="proxyAuthRequired">Proxy requires a username/password</system:String>
 
     <!--  Setting About  -->
     <system:String x:Key="about">About</system:String>

@@ -1,49 +1,40 @@
-﻿namespace Flow.Launcher.Infrastructure.UserSettings
+﻿using System;
+using System.Text.Json.Serialization;
+
+namespace Flow.Launcher.Infrastructure.UserSettings
 {
-    public enum ProxyProperty
+    public enum ProxyMode
     {
-        Enabled,
-        Server,
-        Port,
-        UserName,
-        Password
+        System = 0,
+        Direct,
+        Manual
     }
 
-    public class HttpProxy
+    public class HttpProxy : IJsonOnDeserialized
     {
-        private bool _enabled = false;
-        private string _server;
-        private int _port;
-        private string _userName;
-        private string _password;
-
-        public bool Enabled
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public ProxyMode Mode
         {
-            get => _enabled;
+            get => _mode;
             set
             {
-                _enabled = value;
-                OnPropertyChanged(ProxyProperty.Enabled);
+                _mode = value;
+                OnPropertyChanged();
             }
         }
 
-        public string Server
+        /// <summary>
+        /// Proxy endpoint in the form "host:port", optionally with a scheme prefix:
+        /// "http://host:port" (default when omitted), "https://host:port" or "socks5://host:port".
+        /// Pasted "user:pass@" userinfo is ignored; use UserName/Password instead.
+        /// </summary>
+        public string Address
         {
-            get => _server;
+            get => _address;
             set
             {
-                _server = value;
-                OnPropertyChanged(ProxyProperty.Server);
-            }
-        }
-
-        public int Port
-        {
-            get => _port;
-            set
-            {
-                _port = value;
-                OnPropertyChanged(ProxyProperty.Port);
+                _address = value;
+                OnPropertyChanged();
             }
         }
 
@@ -53,7 +44,7 @@
             set
             {
                 _userName = value;
-                OnPropertyChanged(ProxyProperty.UserName);
+                OnPropertyChanged();
             }
         }
 
@@ -63,16 +54,37 @@
             set
             {
                 _password = value;
-                OnPropertyChanged(ProxyProperty.Password);
+                OnPropertyChanged();
             }
         }
 
-        public delegate void ProxyPropertyChangedHandler(ProxyProperty property);
-        public event ProxyPropertyChangedHandler PropertyChanged;
+        // Legacy fields kept only so old settings files deserialize cleanly;
+        // OnDeserialized migrates them into Mode/Address.
+        public bool Enabled { get; set; }
+        public string Server { get; set; }
+        public int Port { get; set; }
 
-        private void OnPropertyChanged(ProxyProperty property)
+        private ProxyMode _mode = ProxyMode.System;
+        private string _address = string.Empty;
+        private string _userName;
+        private string _password;
+
+        public event Action Changed;
+
+        private void OnPropertyChanged() => Changed?.Invoke();
+
+        public void OnDeserialized()
         {
-            PropertyChanged?.Invoke(property);
+            if (string.IsNullOrEmpty(Address) && !string.IsNullOrEmpty(Server) && Port > 0)
+            {
+                Address = $"http://{Server}:{Port}";
+                Mode = Enabled ? ProxyMode.Manual : ProxyMode.System;
+
+                // Clear migrated legacy values so they are not written back
+                Enabled = false;
+                Server = null;
+                Port = 0;
+            }
         }
     }
 }

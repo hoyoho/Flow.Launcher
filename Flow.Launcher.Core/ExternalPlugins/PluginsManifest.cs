@@ -11,8 +11,11 @@ namespace Flow.Launcher.Core.ExternalPlugins
     {
         private static readonly string ClassName = nameof(PluginsManifest);
 
+        public const string PrimaryManifestUrl =
+            "https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/main/plugins.json";
+
         private static readonly CommunityPluginStore mainPluginStore =
-            new("https://raw.githubusercontent.com/Flow-Launcher/Flow.Launcher.PluginsManifest/main/plugins.json",
+            new(PrimaryManifestUrl,
                 "https://fastly.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@main/plugins.json",
                 "https://gcore.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@main/plugins.json",
                 "https://cdn.jsdelivr.net/gh/Flow-Launcher/Flow.Launcher.PluginsManifest@main/plugins.json");
